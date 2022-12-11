@@ -2,19 +2,19 @@ package ba.unsa.etf.rpr;
 
 import java.util.List;
 
-public class ProdajeDaoImpl implements ProdajeDao {
+public class KategorijeDaoSQLImpl implements KategorijeDao{
     @Override
-    public Artikli getById(int id) {
+    public Kategorije getById(int id) {
         return null;
     }
 
     @Override
-    public Artikli add(Artikli item) {
+    public Kategorije add(Kategorije item) {
         return null;
     }
 
     @Override
-    public Artikli update(Artikli item) {
+    public Kategorije update(Kategorije item) {
         return null;
     }
 
@@ -24,7 +24,7 @@ public class ProdajeDaoImpl implements ProdajeDao {
     }
 
     @Override
-    public List<Artikli> getAll() {
+    public List<Kategorije> getAll() {
         return null;
     }
 }
