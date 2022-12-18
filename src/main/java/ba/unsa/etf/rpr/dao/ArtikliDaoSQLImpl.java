@@ -84,6 +84,18 @@ public class ArtikliDaoSQLImpl implements ArtikliDao {
 
     @Override
     public Artikli update(Artikli item) {
+        try{
+            PreparedStatement stmt = this.connection.prepareStatement("UPDATE artikli SET artikal=?, generated=? WHERE id=?");
+            stmt.setInt(1, item.getId());
+            stmt.setString(2,item.getNaziv());
+            stmt.setInt(3, item.getCijena());
+            stmt.setDate(5, (java.sql.Date) item.getIstekRoka());
+            stmt.executeUpdate();
+            return item;
+        }catch (SQLException e){
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
         return null;
     }
 
