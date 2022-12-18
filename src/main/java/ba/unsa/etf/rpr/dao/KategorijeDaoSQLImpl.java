@@ -1,8 +1,10 @@
-package ba.unsa.etf.rpr;
+package ba.unsa.etf.rpr.dao;
+
+import ba.unsa.etf.rpr.domain.Kategorije;
 
 import java.util.List;
 
-public class KategorijeDaoSQLImpl implements KategorijeDao{
+public class KategorijeDaoSQLImpl implements KategorijeDao {
     @Override
     public Kategorije getById(int id) {
         return null;

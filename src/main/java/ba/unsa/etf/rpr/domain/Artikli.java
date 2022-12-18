@@ -1,10 +1,12 @@
-package ba.unsa.etf.rpr;
+package ba.unsa.etf.rpr.domain;
+
 import java.util.Date;
 import java.util.Objects;
 
 public class Artikli {
     private int id;
     private String naziv;
+    private int cijena;
     private Kategorije kategorija;
     private Date istekRoka;
 
@@ -22,6 +24,14 @@ public class Artikli {
 
     public void setNaziv(String naziv) {
         this.naziv = naziv;
+    }
+
+    public int getCijena() {
+        return cijena;
+    }
+
+    public void setCijena(int cijena) {
+        this.cijena = cijena;
     }
 
     public Kategorije getKategorija() {
@@ -45,6 +55,7 @@ public class Artikli {
         return "Artikli{" +
                 "id=" + id +
                 ", naziv='" + naziv + '\'' +
+                ", cijena=" + cijena +
                 ", kategorija=" + kategorija +
                 ", istekRoka=" + istekRoka +
                 '}';
@@ -55,11 +66,12 @@ public class Artikli {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Artikli artikli = (Artikli) o;
-        return id == artikli.id && Objects.equals(naziv, artikli.naziv) && Objects.equals(kategorija, artikli.kategorija) && Objects.equals(istekRoka, artikli.istekRoka);
+        return id == artikli.id && cijena == artikli.cijena && Objects.equals(naziv, artikli.naziv) && Objects.equals(kategorija, artikli.kategorija) && Objects.equals(istekRoka, artikli.istekRoka);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, naziv, kategorija, istekRoka);
+        return Objects.hash(id, naziv, cijena, kategorija, istekRoka);
     }
+
 }

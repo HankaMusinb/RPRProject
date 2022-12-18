@@ -1,4 +1,6 @@
-package ba.unsa.etf.rpr;
+package ba.unsa.etf.rpr.dao;
+import ba.unsa.etf.rpr.domain.Artikli;
+
 import java.util.Date;
 import java.util.List;
 public interface ArtikliDao extends Dao<Artikli> {
