@@ -5,4 +5,5 @@ import ba.unsa.etf.rpr.domain.Artikli;
 public interface ProdajeDao extends Dao<Artikli> {
 
     int profit();
+
 }
