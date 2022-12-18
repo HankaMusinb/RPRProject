@@ -101,7 +101,14 @@ public class ArtikliDaoSQLImpl implements ArtikliDao {
 
     @Override
     public void delete(int id) {
-
+        try{
+            PreparedStatement stmt = this.connection.prepareStatement("DELETE FROM artikli WHERE id = ?");
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
