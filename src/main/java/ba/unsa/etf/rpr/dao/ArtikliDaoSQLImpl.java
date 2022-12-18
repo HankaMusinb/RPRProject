@@ -51,8 +51,34 @@ public class ArtikliDaoSQLImpl implements ArtikliDao {
         return null;
     }
 
+    private int getMaxId(){
+        int id=1;
+        try {
+            PreparedStatement statement = this.connection.prepareStatement("SELECT MAX(id)+1 FROM artikli");
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()) {
+                id = rs.getInt(1);
+                rs.close();
+                return id;
+            }
+        } catch (SQLException e) {
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
+        return id;
+    }
     @Override
     public Artikli add(Artikli item) {
+        int id = getMaxId();
+        try {
+            PreparedStatement stmt = this.connection.prepareStatement("INSERT INTO artikli VALUES (id, item.getArtikal().getId(), item.getGenerated())");
+            stmt.executeUpdate();
+            item.setId(id);
+            return item;
+        } catch (SQLException e) {
+            System.out.println("Problem pri radu sa bazom podataka");
+            System.out.println(e.getMessage());
+        }
         return null;
     }
 
