@@ -39,7 +39,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
      * @return a Bean object for specific table
 
      */
-    public abstract T row2object(ResultSet rs);
+    public abstract T row2object(ResultSet rs) throws SQLException;
     /**
      * Method for mapping Object into Map
      * @param object - a bean object for specific table

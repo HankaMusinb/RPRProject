@@ -2,121 +2,44 @@ package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Kategorije;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Map;
+import java.util.TreeMap;
 
-public class KategorijeDaoSQLImpl implements KategorijeDao {
+/**
+ * //MySQL implementation of the DAO
+ */
+public class KategorijeDaoSQLImpl extends AbstractDao<Kategorije> implements KategorijeDao {
     private Connection connection;
 
     public KategorijeDaoSQLImpl() {
-        try{
-            this.connection = DriverManager.getConnection("sql.freedb.tech:3306/freedb_RPRProject", "freedb_hmusinbego1", "*bcuN9B@#52h&qn" );
-        }catch (Exception exception){
-            exception.printStackTrace();
-        }
+        super("Kategorije");
     }
+
     @Override
-    public Kategorije getById(int id) {
+    public Kategorije row2object(ResultSet rs) throws SQLException {
+
         try {
-            PreparedStatement stmt = this.connection.prepareStatement("SELECT * FROM categories WHERE id = ?");
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()){
-                Kategorije kategorija = new Kategorije();
-                kategorija.setId(rs.getInt("id"));
-                //kategorija.setKategorija(KategorijeDaoSQLImpl(getById(rs.getRowId()("kategorija")))); //ovo samo kad se doda implementacija i toga ce raditi....
-             //   kategorija.setKategorija(new KategorijeDaoSQLImpl().getById(rs.getInt("quote"))); //ovo samo kad se doda implementacija i toga ce raditi....
-                rs.close();
-                return kategorija;
-            }else{
-                return null;
-            }
-        } catch (SQLException e) {
-            System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
-        }
-        return null;
-    }
-    private int getMaxId(){
-        int id=1;
-        try {
-            PreparedStatement statement = this.connection.prepareStatement("SELECT MAX(id)+1 FROM Categories");
-            ResultSet rs = statement.executeQuery();
-            if(rs.next()) {
-                id = rs.getInt(1);
-                rs.close();
-                return id;
-            }
-        } catch (SQLException e) {
-            System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
-        }
-        return id;
-    }
-    @Override
-    public Kategorije add(Kategorije item) {
-        int id = getMaxId();
-        try {
-            PreparedStatement stmt = this.connection.prepareStatement("INSERT INTO Categories VALUES (id, item.get.Naziv().getId())");
-            stmt.executeUpdate();
-            item.setId(id);
-            return item;
-        } catch (SQLException e) {
-            System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
+            Kategorije kategorije = new Kategorije();
+            kategorije.setId(rs.getInt("idKategorije"));
+            kategorije.setKategorija(rs.getString("Kategorija"));
+            return kategorije;
+        }catch (SQLException e){
+            //
         }
         return null;
     }
 
     @Override
-    public Kategorije update(Kategorije item) {
-
-        try{
-            PreparedStatement stmt = this.connection.prepareStatement("UPDATE Categories SET id=?, kateogorija=? WHERE id=?");
-            //stmt.setInt(1, item.getKategorija().getInt());
-
-            stmt.setInt(3, item.getId());
-            stmt.executeUpdate();
-            return item;
-        }catch (SQLException e){
-            System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
-        }
-        return null;
+    public Map<String, Object> object2row(Kategorije object) {
+        Map<String, Object> row = new TreeMap<>();
+        row.put("id", object.getId());
+        row.put("kategorija", object.getKategorija());
+        return row;
     }
 
-    @Override
-    public void delete(int id) {
-        try{
-            PreparedStatement stmt = this.connection.prepareStatement("DELETE FROM Categories WHERE id = ?");
-            stmt.setInt(1, id);
-            stmt.executeUpdate();
-        }catch (SQLException e){
-            System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
-        }
-    }
 
-    @Override
-    public List<Kategorije> getAll() {
 
-        List<Kategorije> kategorije = new ArrayList<>();
-        try{
-            PreparedStatement stmt = this.connection.prepareStatement("SELECT * FROM Categories");
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()){
-                Kategorije kategorija = new Kategorije();
-                kategorija.setId(rs.getInt("id"));
-                //kategorija.setKategorija(new KategorijeDaoSQLImpl(kategorija.getId())); //ovo samo kad se doda implementacija i toga ce raditi....
-                kategorija.setKategorija(String.valueOf(new KategorijeDaoSQLImpl().getById(rs.getInt("kategorija"))));
-                kategorije.add(kategorija);
-            }
-            rs.close();
-        }catch (SQLException e){
-            System.out.println("Problem pri radu sa bazom podataka");
-            System.out.println(e.getMessage());
-        }
-        return kategorije;
-    }
 }

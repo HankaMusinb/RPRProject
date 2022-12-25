@@ -37,7 +37,7 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliD
             a.setNaziv(rs.getString("naziv"));
             a.setCijena(rs.getInt("cijena"));
             a.setIstekRoka(rs.getDate("istekRoka"));
-            //a.setKategorija(DaoFactory.KategorijeDao().getById(rs.getInt("idKategorije")));
+            a.setKategorija(DaoFactory.kategorijeDao().getById(rs.getInt("idKategorije")));
             return a;
         } catch (SQLException e) {
             throw new RuntimeException(e);
