@@ -1,4 +1,5 @@
 package ba.unsa.etf.rpr.dao;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -12,21 +13,21 @@ public interface Dao<T>{
      * @param id primary key of entity
      * @return item from db
      */
-    T getById(int id);
+    T getById(int id) throws SQLException;
 
     /**
      * Add item to workshop
      * @param item represents new item to be saved to database
      * @return returns item with its id
      */
-    T add( T item);
+    T add(T item) throws SQLException;
 
     /**
      * Updates all items in workshop
      * @param item
      * @return updated version of the item
      */
-    T update(T item);
+    T update(T item) throws SQLException;
 
     /**
      * Delete item with given id from workshop
@@ -38,5 +39,5 @@ public interface Dao<T>{
      * Lists all items in workshop placed in db.
      * @return List of all items.
      */
-    List<T> getAll();
+    List<T> getAll() throws SQLException;
 }

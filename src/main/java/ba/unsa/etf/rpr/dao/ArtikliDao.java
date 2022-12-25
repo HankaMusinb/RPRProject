@@ -1,6 +1,9 @@
 package ba.unsa.etf.rpr.dao;
+
 import ba.unsa.etf.rpr.domain.Artikli;
 
+
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 public interface ArtikliDao extends Dao<Artikli> {
@@ -10,7 +13,7 @@ public interface ArtikliDao extends Dao<Artikli> {
      * @param rok za trazenje artikala s isteknutim rokom
      * @return listu trazenih artikala
      */
-    List<Artikli> traziPoIstekuRoka(Date rok);
+    List<Artikli> traziPoIstekuRoka(Date rok) throws SQLException;
 
     /**
      * vraca sve artikle sa zadanom cijenom
