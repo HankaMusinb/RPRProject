@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Artikli;
+import ba.unsa.etf.rpr.exceptions.ArtikliException;
 
 
 import java.sql.*;
@@ -16,17 +17,15 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliD
 
 
     @Override
-    public List<Artikli> traziPoIstekuRoka(Date rok) throws SQLException {
+    public List<Artikli> traziPoIstekuRoka(Date rok) throws ArtikliException, SQLException {
         return executeQuery("SELECT * FROM artikli WHERE istekRoka = ?", new Object[]{rok});
     }
 
     @Override
-    public List<Artikli> traziPoCijeni(int cijena) {
-        try {
+    public List<Artikli> traziPoCijeni(int cijena) throws ArtikliException {
+
             return executeQuery("SELECT * FROM artikli WHERE cijena = ?", new Object[]{cijena});
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
     }
 
     @Override
@@ -39,7 +38,7 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliD
             a.setIstekRoka(rs.getDate("istekRoka"));
             a.setKategorija(DaoFactory.kategorijeDao().getById(rs.getInt("idKategorije")));
             return a;
-        } catch (SQLException e) {
+        } catch (SQLException | ArtikliException e) {
             throw new RuntimeException(e);
         }
     }

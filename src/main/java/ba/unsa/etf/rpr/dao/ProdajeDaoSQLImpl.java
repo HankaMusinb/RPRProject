@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Prodaje;
+import ba.unsa.etf.rpr.exceptions.ArtikliException;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -21,7 +22,7 @@ public class ProdajeDaoSQLImpl extends AbstractDao<Prodaje> implements ProdajeDa
      * @return sum of profit that the store has made
      */
     @Override
-    public List<Prodaje> vratiProfit(int id ) throws SQLException {
+    public List<Prodaje> vratiProfit(int id ) throws  ArtikliException {
         return executeQuery("SELECT * FROM Prodaje WHERE idProdaje EQUALS = ?", new Object[]{id});
     }
 
@@ -32,14 +33,14 @@ public class ProdajeDaoSQLImpl extends AbstractDao<Prodaje> implements ProdajeDa
      * @return a Bean object for specific table
      */
     @Override
-    public Prodaje row2object(ResultSet rs) throws SQLException {
+    public Prodaje row2object(ResultSet rs) throws ArtikliException {
         try {
             Prodaje prodaje = new Prodaje();
             prodaje.setId(rs.getInt("idProdaje"));
             prodaje.setZarada(rs.getInt("zarada"));
             return prodaje;
         }catch (SQLException e){
-            throw new SQLException();
+            throw new ArtikliException(e.getMessage(), e);
         }
     }
 

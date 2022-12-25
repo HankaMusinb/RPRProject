@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Idable;
+import ba.unsa.etf.rpr.exceptions.ArtikliException;
 
 import java.sql.*;
 import java.util.*;
@@ -39,31 +40,31 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
      * @return a Bean object for specific table
 
      */
-    public abstract T row2object(ResultSet rs) throws SQLException;
+    public abstract T row2object(ResultSet rs) throws ArtikliException;
     /**
      * Method for mapping Object into Map
      * @param object - a bean object for specific table
      * @return key, value sorted map of object
      */
     public abstract Map<String, Object> object2row(T object);
-    public T getById(int id) throws SQLException {
+    public T getById(int id) throws ArtikliException {
         return executeQueryUnique("SELECT * FROM "+this.tableName+" WHERE id = ?", new Object[]{id});
     }
 
-    public List<T> getAll() throws SQLException {
+    public List<T> getAll() throws ArtikliException {
         return executeQuery("SELECT * FROM "+ tableName, null);
     }
-    public void delete(int id) {
+    public void delete(int id) throws ArtikliException {
         String sql = "DELETE FROM "+tableName+" WHERE id = ?";
         try{
             PreparedStatement stmt = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setObject(1, id);
             stmt.executeUpdate();
         }catch (SQLException e){
-
+            throw new ArtikliException(e.getMessage(),e);
         }
     }
-    public T add(T item) throws SQLException{
+    public T add(T item) throws ArtikliException{
         Map<String, Object> row = object2row(item);
         Map.Entry<String, String> columns = prepareInsertParts(row);
 
@@ -89,10 +90,10 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
 
             return item;
         }catch (SQLException e){
-            throw new SQLException(e.getMessage(), e);
+            throw new ArtikliException(e.getMessage(), e);
         }
     }
-    public T update(T item) throws SQLException{
+    public T update(T item) throws ArtikliException{
         Map<String, Object> row = object2row(item);
         String updateColumns = prepareUpdateParts(row);
         StringBuilder builder = new StringBuilder();
@@ -114,7 +115,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
             stmt.executeUpdate();
             return item;
         }catch (SQLException e){
-            throw new SQLException(e.getMessage(), e);
+            throw new ArtikliException(e.getMessage(), e);
         }
     }
     /**
@@ -123,7 +124,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
      * @param params - params for query
      * @return List of objects from database
      */
-    public List<T> executeQuery(String query, Object[] params) throws SQLException{
+    public List<T> executeQuery(String query, Object[] params) throws ArtikliException{
         try {
             PreparedStatement stmt = getConnection().prepareStatement(query);
             if (params != null){
@@ -138,7 +139,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
             }
             return resultList;
         } catch (SQLException e) {
-            throw new SQLException(e.getMessage(), e);
+            throw new ArtikliException(e.getMessage(), e);
         }
     }
     /**
@@ -147,12 +148,12 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
      * @param params - list of params for sql query
      * @return Object
      */
-    public T executeQueryUnique(String query, Object[] params) throws SQLException{
+    public T executeQueryUnique(String query, Object[] params) throws ArtikliException{
         List<T> result = executeQuery(query, params);
         if (result != null && result.size() == 1){
             return result.get(0);
         }else{
-            throw new SQLException("Object not found");
+            throw new ArtikliException("Problemi sa dovrsavanjem radnje");
         }
     }
     /**

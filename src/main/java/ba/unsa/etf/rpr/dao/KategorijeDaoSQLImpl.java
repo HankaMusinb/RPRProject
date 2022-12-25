@@ -19,7 +19,7 @@ public class KategorijeDaoSQLImpl extends AbstractDao<Kategorije> implements Kat
     }
 
     @Override
-    public Kategorije row2object(ResultSet rs) throws SQLException {
+    public Kategorije row2object(ResultSet rs) {
 
         try {
             Kategorije kategorije = new Kategorije();
