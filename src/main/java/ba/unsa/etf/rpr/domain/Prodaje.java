@@ -6,7 +6,7 @@ import java.util.Objects;
  * sums profit every time an item has been selected or searched for
  * @author Hanka Musinbegovic
  */
-public class Prodaje {
+public class Prodaje implements Idable {
     private int id;
     private Artikli artikal;
     private int zarada;

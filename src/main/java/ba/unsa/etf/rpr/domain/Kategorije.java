@@ -3,7 +3,7 @@ package ba.unsa.etf.rpr.domain;
 import java.util.Objects;
 
 
-public class Kategorije {
+public class Kategorije implements Idable {
     private int id;
     private String kategorija;
 

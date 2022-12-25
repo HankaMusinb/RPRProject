@@ -89,7 +89,7 @@ public class ArtikliDaoSQLImpl  implements ArtikliDao {
     private int getMaxId(){
         int id=1;
         try {
-            PreparedStatement statement = this.connection.prepareStatement("SELECT MAX(id)+1 FROM Articles");
+            PreparedStatement statement = this.connection.prepareStatement("SELECT MAX(id)+1 FROM Artikli");
             ResultSet rs = statement.executeQuery();
             if(rs.next()) {
                 id = rs.getInt(1);
@@ -106,7 +106,7 @@ public class ArtikliDaoSQLImpl  implements ArtikliDao {
     public Artikli add(Artikli item) {
         int id = getMaxId();
         try {
-            PreparedStatement stmt = this.connection.prepareStatement("INSERT INTO Articles VALUES (id, item.getArtikal().getId(), item.getNaziv())");
+            PreparedStatement stmt = this.connection.prepareStatement("INSERT INTO Artikli VALUES (id, item.getArtikal().getId(), item.getNaziv())");
             stmt.executeUpdate();
             item.setId(id);
             return item;
