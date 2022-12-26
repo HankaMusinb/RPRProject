@@ -22,7 +22,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
             String url = p.getProperty("db.connection_string");
             String username = p.getProperty("db.username");
             String password = p.getProperty("db.password");
-            this.connection = DriverManager.getConnection("sql.freedb.tech:3306/freedb_RPRProject", "freedb_hmusinbego1", "*bcuN9B@#52h&qn" );
+            this.connection = DriverManager.getConnection(url, username, password);
         }catch (Exception e){
             e.printStackTrace();
             System.exit(0);

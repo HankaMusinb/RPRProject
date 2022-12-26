@@ -6,12 +6,22 @@ package ba.unsa.etf.rpr.dao;
  * @author Hanka Musinbegovic
  */
 public class DaoFactory {
-    private static final KategorijeDao kategorijeDao = new KategorijeDaoSQLImpl();
+//
     private static final ArtikliDao artikliDao = new ArtikliDaoSQLImpl();
-    private static final ProdajeDao prodajeDao = new ProdajeDaoSQLImpl();
 
+    private static final KategorijeDao kategorijeDao = new KategorijeDaoSQLImpl();
+    private static final ProdajeDao prodajeDao = new ProdajeDaoSQLImpl();
     private DaoFactory(){
     }
+
+
+//    public static ArtikliDao artikliDao() {
+//        if(artikliDao==null) {
+//            artikliDao =  new ArtikliDaoSQLImpl();
+//            return artikliDao;
+//        }
+//        return artikliDao;
+//    }
     public static KategorijeDao kategorijeDao(){
         return kategorijeDao;
     }
