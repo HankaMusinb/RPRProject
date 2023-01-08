@@ -20,8 +20,8 @@ public class App
             listaArtikala.stream().forEach(a -> System.out.println(a.getNaziv()));
         } catch (ArtikliException e) {
             System.out.println("Nesto nije u redu sa getAll() metodom!");
-            throw new RuntimeException(e);
+           // throw new RuntimeException(e);
         }
-        System.out.println( "Hello World!" );
+        System.out.println("Nesto nije u redu sa getAll() metodom!");
     }
 }

@@ -61,7 +61,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
             stmt.setObject(1, id);
             stmt.executeUpdate();
         }catch (SQLException e){
-            throw new ArtikliException(e.getMessage(),e);
+            throw new ArtikliException(e.getMessage(), e);
         }
     }
     public T add(T item) throws ArtikliException{

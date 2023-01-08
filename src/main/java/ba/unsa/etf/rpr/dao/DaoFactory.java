@@ -22,12 +22,13 @@ public class DaoFactory {
 //        }
 //        return artikliDao;
 //    }
+    public static ArtikliDao artikliDao(){
+    return artikliDao;
+}
     public static KategorijeDao kategorijeDao(){
         return kategorijeDao;
     }
-    public static ArtikliDao artikliDao(){
-        return artikliDao;
-    }
+
     public static ProdajeDao prodajeDao(){
         return prodajeDao;
     }

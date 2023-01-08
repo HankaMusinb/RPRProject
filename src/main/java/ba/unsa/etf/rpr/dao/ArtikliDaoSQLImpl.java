@@ -17,19 +17,19 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliD
 
 
     @Override
-    public List<Artikli> traziPoIstekuRoka(Date rok) throws ArtikliException, SQLException {
-        return executeQuery("SELECT * FROM artikli WHERE istekRoka = ?", new Object[]{rok});
+    public List<Artikli> traziPoIstekuRoka(Date rok) throws ArtikliException {
+        return executeQuery("SELECT * FROM Artikli WHERE istekRoka = ?", new Object[]{rok});
     }
 
     @Override
     public List<Artikli> traziPoCijeni(int cijena) throws ArtikliException {
 
-            return executeQuery("SELECT * FROM artikli WHERE cijena = ?", new Object[]{cijena});
+            return executeQuery("SELECT * FROM Artikli WHERE cijena = ?", new Object[]{cijena});
 
     }
 
     @Override
-    public Artikli row2object(ResultSet rs) {
+    public Artikli row2object(ResultSet rs) throws ArtikliException {
         try{
             Artikli a = new Artikli();
             a.setId(rs.getInt("idArtikli"));
@@ -37,9 +37,10 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliD
             a.setCijena(rs.getInt("cijena"));
             a.setIstekRoka(rs.getDate("istekRoka"));
             a.setKategorija(DaoFactory.kategorijeDao().getById(rs.getInt("idKategorije")));
+            //a.setProdaja(DaoFactory.kategorijeDao().getById(rs.getInt("idKategorije")));
             return a;
-        } catch (SQLException | ArtikliException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new ArtikliException(e.getMessage(),e);
         }
     }
     /**
@@ -49,7 +50,7 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliD
     @Override
     public Map<String, Object> object2row(Artikli object) {
         Map<String,Object> artikal = new TreeMap<>();
-        artikal.put("id", object.getId());
+        artikal.put("idArtikli", object.getId());
         artikal.put("naziv",object.getNaziv());
         artikal.put("cijena",object.getCijena());
         artikal.put("istekRoka",object.getIstekRoka());
