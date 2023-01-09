@@ -13,7 +13,7 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliD
     public ArtikliDaoSQLImpl(){
         super("Artikli");
     }
-    private Connection connection;
+
 
 
     @Override
@@ -36,8 +36,8 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliD
             a.setNaziv(rs.getString("naziv"));
             a.setCijena(rs.getInt("cijena"));
             a.setIstekRoka(rs.getDate("istekRoka"));
-            a.setKategorija(DaoFactory.kategorijeDao().getById(rs.getInt("idKategorije")));
-            //a.setProdaja(DaoFactory.kategorijeDao().getById(rs.getInt("idKategorije")));
+            //a.setKategorija(DaoFactory.kategorijeDao().getById(rs.getInt("idKategorije")));
+            //a.setProdaje(DaoFactory.prodajeDao().getById(rs.getInt("idProdaje")));
             return a;
         } catch (Exception e) {
             throw new ArtikliException(e.getMessage(),e);

@@ -41,5 +41,5 @@ public interface Dao<T>{
      * Lists all items in workshop placed in db.
      * @return List of all items.
      */
-    List<T> getAll() throws ArtikliException;
+    List<T> getAll() throws ArtikliException; // throws ArtikliException;
 }

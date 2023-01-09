@@ -1,10 +1,8 @@
 package ba.unsa.etf.rpr.domain;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
+import ba.unsa.etf.rpr.dao.KategorijeDao;
 import ba.unsa.etf.rpr.exceptions.ArtikliException;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Hello world!
@@ -12,16 +10,9 @@ import java.util.List;
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
-        try {
-
-            List<Artikli> listaArtikala = new ArrayList<Artikli>(DaoFactory.artikliDao().getAll());
-            listaArtikala.stream().forEach(a -> System.out.println(a.getNaziv()));
-        } catch (ArtikliException e) {
-            System.out.println("Nesto nije u redu sa getAll() metodom!");
-           // throw new RuntimeException(e);
-        }
-        System.out.println("Nesto nije u redu sa getAll() metodom!");
+    public static void main( String[] args ) throws ArtikliException {
+        KategorijeDao kategorijeDao = DaoFactory.kategorijeDao();
+         // ArtikliDao artikliDao = DaoFactory.artikliDao();
+        System.out.println(kategorijeDao.getById(2));
     }
 }

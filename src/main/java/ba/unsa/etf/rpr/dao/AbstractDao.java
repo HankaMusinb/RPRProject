@@ -13,16 +13,19 @@ import java.util.*;
  */
 public abstract class AbstractDao<T extends Idable> implements Dao<T> {
     private Connection connection;
+
+    //private static Connection connection;
     private String tableName;
     public AbstractDao(String tableName) {
         try{
+            //if(connection == null) createConnection();
             this.tableName = tableName;
             Properties p = new Properties();
             p.load(ClassLoader.getSystemResource("application.properties").openStream());
             String url = p.getProperty("db.connection_string");
             String username = p.getProperty("db.username");
             String password = p.getProperty("db.password");
-            this.connection = DriverManager.getConnection(url, username, password);
+            connection = DriverManager.getConnection("jdbc:mysql://sql.freedb.tech:3306/freedb_RPRProject", "freedb_hmusinbego1", "*bcuN9B@#52h&qn");
         }catch (Exception e){
             e.printStackTrace();
             System.exit(0);
@@ -48,6 +51,21 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
      */
     public abstract Map<String, Object> object2row(T object);
     public T getById(int id) throws ArtikliException {
+        String query= "SELECT * FROM "+this.tableName+" WHERE id = ?";
+        try {
+            PreparedStatement statement = this.connection.prepareStatement(query);
+            statement.setInt(1,id);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                T result = row2object(rs);
+                rs.close();
+            }else {
+                throw new ArtikliException("Objekat nije pronadjen!");
+            }
+
+        } catch (SQLException e) {
+            throw new ArtikliException(e.getMessage(),e);
+        }
         return executeQueryUnique("SELECT * FROM "+this.tableName+" WHERE id = ?", new Object[]{id});
     }
 
