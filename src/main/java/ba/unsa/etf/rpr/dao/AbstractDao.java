@@ -51,22 +51,12 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
      */
     public abstract Map<String, Object> object2row(T object);
     public T getById(int id) throws ArtikliException {
-        String query= "SELECT * FROM "+this.tableName+" WHERE id = ?";
-        try {
-            PreparedStatement statement = this.connection.prepareStatement(query);
-            statement.setInt(1,id);
-            ResultSet rs = statement.executeQuery();
-            if (rs.next()) {
-                T result = row2object(rs);
-                rs.close();
-            }else {
-                throw new ArtikliException("Objekat nije pronadjen!");
-            }
-
-        } catch (SQLException e) {
-            throw new ArtikliException(e.getMessage(),e);
+        try{
+            return executeQueryUnique("SELECT * FROM "+this.tableName+" WHERE id = ?", new Object[]{id});
+        }catch (ArtikliException e){
+            throw new ArtikliException("Problem sa getbyId u ArtikliDaoSQLImpl");
         }
-        return executeQueryUnique("SELECT * FROM "+this.tableName+" WHERE id = ?", new Object[]{id});
+
     }
 
     public List<T> getAll() throws ArtikliException {
@@ -108,7 +98,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
 
             return item;
         }catch (SQLException e){
-            throw new ArtikliException(e.getMessage(), e);
+            throw new ArtikliException("Problem je add metoda");
         }
     }
     public T update(T item) throws ArtikliException{
@@ -157,7 +147,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
             }
             return resultList;
         } catch (SQLException e) {
-            throw new ArtikliException(e.getMessage(), e);
+            throw new ArtikliException("Problemi sa executequery metodom");
         }
     }
     /**

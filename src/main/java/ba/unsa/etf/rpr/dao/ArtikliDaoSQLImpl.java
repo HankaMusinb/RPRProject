@@ -1,14 +1,13 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Artikli;
-import ba.unsa.etf.rpr.domain.Kategorije;
 import ba.unsa.etf.rpr.exceptions.ArtikliException;
 
-
-import java.sql.*;
+import java.sql.ResultSet;
 import java.util.Date;
 import java.util.List;
-import java.util.*;
+import java.util.Map;
+import java.util.TreeMap;
 public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliDao {
 
     public ArtikliDaoSQLImpl(){
@@ -25,14 +24,14 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliD
             a.setNaziv(rs.getString("naziv"));
             a.setCijena(rs.getInt("cijena"));
             a.setIstekRoka(rs.getDate("istekRoka"));
-            int i = rs.getInt("idKategorije");
-            Kategorije k = DaoFactory.kategorijeDao().getById(i);
-            a.setKategorija(k);
+//            int i = rs.getInt("idKategorije");
+//            Kategorije k = DaoFactory.kategorijeDao().getById(i);
+//            a.setKategorija(k);
             //a.setKategorija(DaoFactory.kategorijeDao().getById(rs.getInt("idKategorije")));
             //a.setProdaje(DaoFactory.prodajeDao().getById(rs.getInt("idProdaje")));
             return a;
         } catch (Exception e) {
-            throw new ArtikliException(e.getMessage(),e);
+            throw new ArtikliException("Problem sa row2object u ArtikliDaoSQLImpl");
         }
     }
     /**

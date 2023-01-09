@@ -28,7 +28,7 @@ public class KategorijeDaoSQLImpl extends AbstractDao<Kategorije> implements Kat
             kategorije.setKategorija(rs.getString("Kategorija"));
             return kategorije;
         }catch (SQLException e){
-            throw new ArtikliException(e.getMessage(),e);
+            throw new ArtikliException("Problem sa row2object u KategorijeDaoSQLImpl");
         }
 
     }
