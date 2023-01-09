@@ -18,13 +18,13 @@ public class App
 //        System.out.println(kategorijeDao.getById(2));
         try {
             List<Artikli> listaArtikala = new ArrayList<Artikli>(DaoFactory.artikliDao().getAll());
-            listaArtikala.stream().forEach(a -> System.out.println(a.getNaziv()));
+            System.out.println(listaArtikala);
         } catch (ArtikliException e) {
             System.out.println("Nesto nije u redu sa getAll() metodom!");
             throw new RuntimeException(e);
-            // throw new RuntimeException(e);
+
         }
         System.out.println( "Hello World!" );
-       // System.out.println("Nesto nije u redu sa getAll() metodom!");
+
     }
 }

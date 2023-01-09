@@ -18,13 +18,6 @@ public class ProdajeDaoSQLImpl extends AbstractDao<Prodaje> implements ProdajeDa
     }
 
 
-    /**
-     * @return sum of profit that the store has made
-     */
-    @Override
-    public List<Prodaje> vratiProfit(int id ) throws  ArtikliException {
-        return executeQuery("SELECT * FROM Prodaje WHERE idProdaje EQUALS = ?", new Object[]{id});
-    }
 
     /**
      * Method for mapping ResultSet into Object
@@ -36,7 +29,7 @@ public class ProdajeDaoSQLImpl extends AbstractDao<Prodaje> implements ProdajeDa
     public Prodaje row2object(ResultSet rs) throws ArtikliException {
         try {
             Prodaje prodaje = new Prodaje();
-            prodaje.setId(rs.getInt("idProdaje"));
+            prodaje.setId(rs.getInt("id"));
             prodaje.setZarada(rs.getInt("zarada"));
             return prodaje;
         }catch (SQLException e){
@@ -53,8 +46,16 @@ public class ProdajeDaoSQLImpl extends AbstractDao<Prodaje> implements ProdajeDa
     @Override
     public Map<String, Object> object2row(Prodaje object) {
         Map<String,Object> item = new TreeMap<>();
-        item.put("idProdaje", object.getId());
+        item.put("id", object.getId());
         item.put("zarada", object.getZarada());
         return item;
     }
+    /**
+     * @return sum of profit that the store has made
+     */
+    @Override
+    public List<Prodaje> vratiProfit(int id ) throws  ArtikliException {
+        return executeQuery("SELECT * FROM Prodaje WHERE idProdaje EQUALS = ?", new Object[]{id});
+    }
+
 }

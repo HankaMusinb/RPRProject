@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Artikli;
+import ba.unsa.etf.rpr.domain.Kategorije;
 import ba.unsa.etf.rpr.exceptions.ArtikliException;
 
 
@@ -20,12 +21,15 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliD
     public Artikli row2object(ResultSet rs) throws ArtikliException {
         try{
             Artikli a = new Artikli();
-            a.setId(rs.getInt("idArtikli"));
+            a.setId(rs.getInt("id"));
             a.setNaziv(rs.getString("naziv"));
             a.setCijena(rs.getInt("cijena"));
             a.setIstekRoka(rs.getDate("istekRoka"));
-            a.setKategorija(DaoFactory.kategorijeDao().getById(rs.getInt("idKategorije")));
-            a.setProdaje(DaoFactory.prodajeDao().getById(rs.getInt("idProdaje")));
+            int i = rs.getInt("idKategorije");
+            Kategorije k = DaoFactory.kategorijeDao().getById(i);
+            a.setKategorija(k);
+            //a.setKategorija(DaoFactory.kategorijeDao().getById(rs.getInt("idKategorije")));
+            //a.setProdaje(DaoFactory.prodajeDao().getById(rs.getInt("idProdaje")));
             return a;
         } catch (Exception e) {
             throw new ArtikliException(e.getMessage(),e);
@@ -38,7 +42,7 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliD
     @Override
     public Map<String, Object> object2row(Artikli object) {
         Map<String,Object> artikal = new TreeMap<>();
-        artikal.put("idArtikli", object.getId());
+        artikal.put("id", object.getId());
         artikal.put("naziv",object.getNaziv());
         artikal.put("cijena",object.getCijena());
         artikal.put("istekRoka",object.getIstekRoka());

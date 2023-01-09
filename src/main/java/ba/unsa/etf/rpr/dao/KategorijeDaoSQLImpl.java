@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Kategorije;
+import ba.unsa.etf.rpr.exceptions.ArtikliException;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -19,23 +20,23 @@ public class KategorijeDaoSQLImpl extends AbstractDao<Kategorije> implements Kat
     }
 
     @Override
-    public Kategorije row2object(ResultSet rs) {
+    public Kategorije row2object(ResultSet rs) throws ArtikliException {
 
         try {
             Kategorije kategorije = new Kategorije();
-            kategorije.setId(rs.getInt("idKategorije"));
+            kategorije.setId(rs.getInt("id"));
             kategorije.setKategorija(rs.getString("Kategorija"));
             return kategorije;
         }catch (SQLException e){
-            //
+            throw new ArtikliException(e.getMessage(),e);
         }
-        return null;
+
     }
 
     @Override
     public Map<String, Object> object2row(Kategorije object) {
         Map<String, Object> row = new TreeMap<>();
-        row.put("idKategorije", object.getId());
+        row.put("id", object.getId());
         row.put("Kategorija", object.getKategorija());
         return row;
     }

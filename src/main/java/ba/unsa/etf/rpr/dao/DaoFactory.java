@@ -8,7 +8,7 @@ package ba.unsa.etf.rpr.dao;
 public class DaoFactory {
 //
 
-   // private static final ArtikliDao a1 = new ArtikliDaoSQLImpl();
+
     private static final KategorijeDao kategorijeDao = new KategorijeDaoSQLImpl();
     private static final ArtikliDao artikliDao = new ArtikliDaoSQLImpl();
     private static final ProdajeDao prodajeDao = new ProdajeDaoSQLImpl();
