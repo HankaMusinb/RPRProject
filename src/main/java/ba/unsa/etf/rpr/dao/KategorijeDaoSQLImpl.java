@@ -36,7 +36,7 @@ public class KategorijeDaoSQLImpl extends AbstractDao<Kategorije> implements Kat
     public Map<String, Object> object2row(Kategorije object) {
         Map<String, Object> row = new TreeMap<>();
         row.put("idKategorije", object.getId());
-        row.put("kategorija", object.getKategorija());
+        row.put("Kategorija", object.getKategorija());
         return row;
     }
 

@@ -17,18 +17,6 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliD
 
 
     @Override
-    public List<Artikli> traziPoIstekuRoka(Date rok) throws ArtikliException {
-        return executeQuery("SELECT * FROM Artikli WHERE istekRoka = ?", new Object[]{rok});
-    }
-
-    @Override
-    public List<Artikli> traziPoCijeni(int cijena) throws ArtikliException {
-
-            return executeQuery("SELECT * FROM Artikli WHERE cijena = ?", new Object[]{cijena});
-
-    }
-
-    @Override
     public Artikli row2object(ResultSet rs) throws ArtikliException {
         try{
             Artikli a = new Artikli();
@@ -36,8 +24,8 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliD
             a.setNaziv(rs.getString("naziv"));
             a.setCijena(rs.getInt("cijena"));
             a.setIstekRoka(rs.getDate("istekRoka"));
-            //a.setKategorija(DaoFactory.kategorijeDao().getById(rs.getInt("idKategorije")));
-            //a.setProdaje(DaoFactory.prodajeDao().getById(rs.getInt("idProdaje")));
+            a.setKategorija(DaoFactory.kategorijeDao().getById(rs.getInt("idKategorije")));
+            a.setProdaje(DaoFactory.prodajeDao().getById(rs.getInt("idProdaje")));
             return a;
         } catch (Exception e) {
             throw new ArtikliException(e.getMessage(),e);
@@ -57,6 +45,16 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliD
         artikal.put("idKategorije", object.getKategorija().getId());
         return artikal;
     }
+    @Override
+    public List<Artikli> traziPoIstekuRoka(Date rok) throws ArtikliException {
+        return executeQuery("SELECT * FROM Artikli WHERE istekRoka = ?", new Object[]{rok});
+    }
 
+    @Override
+    public List<Artikli> traziPoCijeni(int cijena) throws ArtikliException {
+
+        return executeQuery("SELECT * FROM Artikli WHERE cijena = ?", new Object[]{cijena});
+
+    }
 
 }
