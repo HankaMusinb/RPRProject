@@ -20,7 +20,7 @@ public class App
             List<Artikli> listaArtikala = new ArrayList<Artikli>(DaoFactory.artikliDao().getAll());
             System.out.println(listaArtikala);
         } catch (ArtikliException e) {
-            System.out.println("Nesto nije u redu sa getAll() metodom!");
+            System.out.println("Nesto nije u redu sa getId() metodom!");
             throw new RuntimeException(e);
 
         }
