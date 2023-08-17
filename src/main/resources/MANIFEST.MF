@@ -1,1 +1,1 @@
-Main-Class: ba.unsa.etf.rpr.domain.App
+Main-Class: ba.unsa.etf.rpr.exceptions.ArtikliException.App
