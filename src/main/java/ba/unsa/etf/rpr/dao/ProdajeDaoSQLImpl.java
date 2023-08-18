@@ -3,7 +3,6 @@ package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.domain.Prodaje;
 import ba.unsa.etf.rpr.exceptions.ArtikliException;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -11,10 +10,19 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class ProdajeDaoSQLImpl extends AbstractDao<Prodaje> implements ProdajeDao {
-    private Connection connection;
 
-    public ProdajeDaoSQLImpl() {
-        super("Prodaje");
+    private static ProdajeDaoSQLImpl instance = null;
+    private ProdajeDaoSQLImpl() { super ("Prodaje");}
+
+    public static ProdajeDaoSQLImpl getInstance(){
+        if(instance==null)
+            instance = new ProdajeDaoSQLImpl();
+        return instance;
+    }
+
+    public static void removeInstance(){
+        if(instance!=null)
+            instance = null;
     }
 
 
@@ -31,6 +39,8 @@ public class ProdajeDaoSQLImpl extends AbstractDao<Prodaje> implements ProdajeDa
             Prodaje prodaje = new Prodaje();
             prodaje.setId(rs.getInt("id"));
             prodaje.setZarada(rs.getInt("zarada"));
+            prodaje.setArtikal(DaoFactory.artikliDao().getById(rs.getInt("ArtikliId")));
+            ////////////////////////PROVJERI
             return prodaje;
         }catch (SQLException e){
             throw new ArtikliException("Problem sa row2object u ProdajeDaoSQLImpl");
@@ -48,6 +58,7 @@ public class ProdajeDaoSQLImpl extends AbstractDao<Prodaje> implements ProdajeDa
         Map<String,Object> item = new TreeMap<>();
         item.put("id", object.getId());
         item.put("zarada", object.getZarada());
+        item.put("artikal",object.getArtikal());
         return item;
     }
     /**

@@ -25,10 +25,7 @@ public class Kategorije implements Idable {
 
     @Override
     public String toString() {
-        return "Kategorije{" +
-                "id=" + id +
-                ", kategorija='" + kategorija + '\'' +
-                '}';
+        return kategorija;
     }
 
     @Override
@@ -36,7 +33,7 @@ public class Kategorije implements Idable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Kategorije that = (Kategorije) o;
-        return id == that.id && Objects.equals(kategorija, that.kategorija);
+        return id == that.id;
     }
 
     @Override

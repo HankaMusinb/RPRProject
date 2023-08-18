@@ -6,12 +6,10 @@ package ba.unsa.etf.rpr.dao;
  * @author Hanka Musinbegovic
  */
 public class DaoFactory {
-//
 
-
-    private static final KategorijeDao kategorijeDao = new KategorijeDaoSQLImpl();
-    private static final ArtikliDao artikliDao = new ArtikliDaoSQLImpl();
-    private static final ProdajeDao prodajeDao = new ProdajeDaoSQLImpl();
+    private static final KategorijeDao kategorijeDao = KategorijeDaoSQLImpl.getInstance();
+    private static final ArtikliDao artikliDao = ArtikliDaoSQLImpl.getInstance();
+    private static final ProdajeDao prodajeDao = ProdajeDaoSQLImpl.getInstance();
     private DaoFactory(){
     }
 

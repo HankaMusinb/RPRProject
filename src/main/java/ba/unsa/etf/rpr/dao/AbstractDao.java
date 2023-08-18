@@ -12,12 +12,12 @@ import java.util.*;
  * @author Hanka Musinbegovic
  */
 public abstract class AbstractDao<T extends Idable> implements Dao<T> {
-    private Connection connection;
+    private  static Connection connection = null;
 
     //private static Connection connection;
     private String tableName;
     public AbstractDao(String tableName) {
-        try{
+       /* try{
             //if(connection == null) createConnection();
             this.tableName = tableName;
             Properties p = new Properties();
@@ -29,14 +29,40 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
         }catch (Exception e){
             e.printStackTrace();
             System.exit(0);
+        }*/
+        this.tableName = tableName;
+        createConnection();
+    }
+
+    private static void createConnection(){
+        if(AbstractDao.connection==null){
+            try {
+                Properties p = new Properties();
+                p.load(ClassLoader.getSystemResource("application.properties").openStream());
+                String url = p.getProperty("db.connection_string");
+                String username = p.getProperty("db.username");
+                String password = p.getProperty("db.password");
+                AbstractDao.connection=DriverManager.getConnection(url,username,password);
+            }catch (Exception e){
+                e.printStackTrace();
+            }finally {
+                Runtime.getRuntime().addShutdownHook(new Thread(){
+                    @Override
+                    public void run(){
+                        try {
+                            connection.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
         }
     }
     public Connection getConnection(){
-        return this.connection;
+        return AbstractDao.connection;
     }
-    public void setConnection(Connection connection){
-        this.connection = connection;
-    }
+
     /**
      * Method for mapping ResultSet into Object
      * @param rs - result set from database
@@ -51,11 +77,12 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
      */
     public abstract Map<String, Object> object2row(T object);
     public T getById(int id) throws ArtikliException {
-        try{
+       /* try{
             return executeQueryUnique("SELECT * FROM "+this.tableName+" WHERE id = ?", new Object[]{id});
         }catch (ArtikliException e){
             throw new ArtikliException("Problem sa getbyId u ArtikliDaoSQLImpl");
-        }
+        }*/
+        return executeQueryUnique("SELECT * FROM " + this.tableName+"WHERE id = ?", new Object[]{id});
 
     }
 
@@ -123,7 +150,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
             stmt.executeUpdate();
             return item;
         }catch (SQLException e){
-            throw new ArtikliException(e.getMessage(), e);
+            throw new ArtikliException("Problem s update metodom", e);
         }
     }
     /**

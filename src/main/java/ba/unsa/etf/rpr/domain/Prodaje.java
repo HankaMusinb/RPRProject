@@ -49,7 +49,7 @@ public class Prodaje implements Idable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Prodaje prodaje = (Prodaje) o;
-        return id == prodaje.id && zarada == prodaje.zarada && Objects.equals(artikal, prodaje.artikal);
+        return id == prodaje.id;
     }
 
     @Override

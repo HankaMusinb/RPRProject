@@ -9,7 +9,7 @@ public class Artikli implements Idable {
     private int cijena;
     private Kategorije kategorija;
     private Date istekRoka;
-    private Prodaje prodaje;
+   /* private Prodaje prodaje;
 
     public Prodaje getProdaje() {
         return prodaje;
@@ -17,7 +17,7 @@ public class Artikli implements Idable {
 
     public void setProdaje(Prodaje prodaje) {
         this.prodaje = prodaje;
-    }
+    }*/
 
     public int getId() {
         return id;
@@ -75,7 +75,7 @@ public class Artikli implements Idable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Artikli artikli = (Artikli) o;
-        return id == artikli.id && cijena == artikli.cijena && Objects.equals(naziv, artikli.naziv) && Objects.equals(kategorija, artikli.kategorija) && Objects.equals(istekRoka, artikli.istekRoka);
+        return id == artikli.id;
     }
 
     @Override

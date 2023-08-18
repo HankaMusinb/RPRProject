@@ -9,13 +9,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliDao {
+    private static ArtikliDaoSQLImpl instance = null;
+    private ArtikliDaoSQLImpl() {super("Artikli");}
 
-    public ArtikliDaoSQLImpl(){
-        super("Artikli");
+
+    public static ArtikliDaoSQLImpl getInstance(){
+        if(instance == null)
+            instance = new ArtikliDaoSQLImpl();
+        return instance;
     }
 
-
-
+    public static void removeInstance(){
+        if(instance != null)
+            instance = null;
+    }
     @Override
     public Artikli row2object(ResultSet rs) throws ArtikliException {
         try{
@@ -27,7 +34,7 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliD
 //            int i = rs.getInt("idKategorije");
 //            Kategorije k = DaoFactory.kategorijeDao().getById(i);
 //            a.setKategorija(k);
-            //a.setKategorija(DaoFactory.kategorijeDao().getById(rs.getInt("idKategorije")));
+            a.setKategorija(DaoFactory.kategorijeDao().getById(rs.getInt("idKategorije")));
             //a.setProdaje(DaoFactory.prodajeDao().getById(rs.getInt("idProdaje")));
             return a;
         } catch (Exception e) {
