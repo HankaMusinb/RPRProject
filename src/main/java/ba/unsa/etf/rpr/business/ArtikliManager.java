@@ -14,12 +14,14 @@ import java.util.List;
 public class ArtikliManager {
 
 
-    public List<Artikli> getAll() throws ArtikliException{
-        return DaoFactory.artikliDao().getAll();
-    }
+
 
     public List<Artikli> searchArticlePrice(Integer text) throws ArtikliException{
         return DaoFactory.artikliDao().traziPoCijeni(text);
+    }
+
+    public List<Artikli> getAll() throws ArtikliException{
+        return DaoFactory.artikliDao().getAll();
     }
 
     public void delete(int id) throws ArtikliException{
