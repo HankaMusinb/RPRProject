@@ -20,14 +20,16 @@ public class ArtikliManager {
         return DaoFactory.artikliDao().traziPoCijeni(text);
     }
 
+    public Artikli getById(int artikliId) throws ArtikliException{
+        return DaoFactory.artikliDao().getById(artikliId);
+    }
+
     public List<Artikli> getAll() throws ArtikliException{
         return DaoFactory.artikliDao().getAll();
     }
 
 
-    public Artikli getById(int artikliId) throws ArtikliException{
-        return DaoFactory.artikliDao().getById(artikliId);
-    }
+
     public void delete(int id) throws ArtikliException{
         DaoFactory.artikliDao().delete(id);
     }
