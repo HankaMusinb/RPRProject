@@ -58,6 +58,10 @@ public class Artikli implements Idable {
     public void setIstekRoka(Date istekRoka) {
         this.istekRoka = istekRoka;
     }
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, naziv, cijena, kategorija, istekRoka);
+    }
 
     @Override
     public String toString() {
@@ -78,9 +82,6 @@ public class Artikli implements Idable {
         return id == artikli.id;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, naziv, cijena, kategorija, istekRoka);
-    }
+
 
 }
