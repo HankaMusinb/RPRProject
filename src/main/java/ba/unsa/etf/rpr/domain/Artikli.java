@@ -64,6 +64,14 @@ public class Artikli implements Idable {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Artikli artikli = (Artikli) o;
+        return id == artikli.id;
+    }
+
+    @Override
     public String toString() {
         return "Artikli{" +
                 "id=" + id +
@@ -74,13 +82,7 @@ public class Artikli implements Idable {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Artikli artikli = (Artikli) o;
-        return id == artikli.id;
-    }
+
 
 
 
