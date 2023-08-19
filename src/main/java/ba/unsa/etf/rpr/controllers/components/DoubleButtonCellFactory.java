@@ -28,6 +28,6 @@ public class DoubleButtonCellFactory<T> implements Callback<TableColumn<T, T>, T
 
     @Override
     public TableCell<T, T> call(TableColumn<T, T> quoteObjectTableColumn) {
-        return new DoubleButtonTableCell(buttonOne, buttonTwo);
+        return new DoubleButtonTableCell<>(buttonOne, buttonTwo);
     }
 }
