@@ -36,7 +36,7 @@ public class KategorijeManager {
             DaoFactory.kategorijeDao().delete(kategorijeId);
         }catch (ArtikliException e){
             if (e.getMessage().contains("FOREIGN KEY")){
-                throw new ArtikliException("Postoje artikli vezani za ovu kategoriju. Prvo je potrebno obrisati iste.");
+                throw new ArtikliException("Postoje artikli vezani za kategoriju. Prvo je potrebno obrisati iste.");
             }
             throw e;
         }
