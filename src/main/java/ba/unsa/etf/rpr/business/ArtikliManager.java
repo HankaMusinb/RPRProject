@@ -24,11 +24,12 @@ public class ArtikliManager {
         return DaoFactory.artikliDao().getAll();
     }
 
-    public void delete(int id) throws ArtikliException{
-        DaoFactory.artikliDao().delete(id);
-    }
+
     public Artikli getById(int artikliId) throws ArtikliException{
         return DaoFactory.artikliDao().getById(artikliId);
+    }
+    public void delete(int id) throws ArtikliException{
+        DaoFactory.artikliDao().delete(id);
     }
     public void update(Artikli artikli) throws ArtikliException{
         DaoFactory.artikliDao().update(artikli);
