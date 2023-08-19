@@ -2,6 +2,8 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.ArtikliManager;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -18,5 +20,8 @@ public class ArtikliController {
     public BorderPane ArtikliScreen;
 
     //components
+
+    public TableView quotesTable;
+    public TextField search;
 
 }
