@@ -28,8 +28,6 @@ public class ArtikliManager {
         return DaoFactory.artikliDao().getAll();
     }
 
-
-
     public void delete(int id) throws ArtikliException{
         DaoFactory.artikliDao().delete(id);
     }
