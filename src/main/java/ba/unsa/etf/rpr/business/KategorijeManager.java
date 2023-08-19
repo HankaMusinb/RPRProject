@@ -19,14 +19,14 @@ public class KategorijeManager {
     }
     public Kategorije add(Kategorije kategorije) throws ArtikliException{
         if (kategorije.getId() != 0){
-            throw new ArtikliException("Nemoguce dodati kategoriju s ovim ID.");
+            throw new ArtikliException("Nemoguce dodati kategoriju s ovim ID (ID postoji).");
         }
         validateCategoryName(kategorije.getKategorija());
         try {
             return DaoFactory.kategorijeDao().add(kategorije);
         }catch (ArtikliException e){
             if (e.getMessage().contains("UQ_NAME")){
-                throw new ArtikliException("Postoji kategorija s navedenim nazivom.");
+                throw new ArtikliException("Postoji kategorija s navedenim imenom.");
             }
             throw e;
         }
