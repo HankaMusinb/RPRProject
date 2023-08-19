@@ -42,12 +42,14 @@ public class KategorijeManager {
         }
     }
 
+    public List<Kategorije> getAll() throws ArtikliException{
+        return DaoFactory.kategorijeDao().getAll();
+    }
+
     public Kategorije update(Kategorije kategorija) throws ArtikliException{
         validateCategoryName(kategorija.getKategorija());
         return DaoFactory.kategorijeDao().update(kategorija);
     }
 
-    public List<Kategorije> getAll() throws ArtikliException{
-        return DaoFactory.kategorijeDao().getAll();
-    }
+
 }
