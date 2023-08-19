@@ -42,9 +42,9 @@ public class KategorijeManager {
         }
     }
 
-    public Kategorije update(Kategorije kategorije) throws ArtikliException{
-        validateCategoryName(kategorije.getKategorija());
-        return DaoFactory.kategorijeDao().update(kategorije);
+    public Kategorije update(Kategorije kategorija) throws ArtikliException{
+        validateCategoryName(kategorija.getKategorija());
+        return DaoFactory.kategorijeDao().update(kategorija);
     }
 
     public List<Kategorije> getAll() throws ArtikliException{
