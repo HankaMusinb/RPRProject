@@ -9,15 +9,6 @@ public class Artikli implements Idable {
     private int cijena;
     private Kategorije kategorija;
     private Date istekRoka;
-   /* private Prodaje prodaje;
-
-    public Prodaje getProdaje() {
-        return prodaje;
-    }
-
-    public void setProdaje(Prodaje prodaje) {
-        this.prodaje = prodaje;
-    }*/
 
     public int getId() {
         return id;
