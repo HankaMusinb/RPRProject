@@ -22,6 +22,9 @@ public class App
 
     private static final Option addCategory = new Option("c","add-category",false, "Adding new category");
 
+    private static final Option getArtikal = new Option("getA", "get-articles",false, "Printing all articles");
+
+
     public static void main( String[] args ) throws ArtikliException {
 //        KategorijeDao kategorijeDao = DaoFactory.kategorijeDao();
 //         // ArtikliDao artikliDao = DaoFactory.artikliDao();
