@@ -1,8 +1,10 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.ArtikliManager;
+import ba.unsa.etf.rpr.controllers.components.DoubleButtonCellFactory;
 import ba.unsa.etf.rpr.domain.Artikli;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -46,6 +48,13 @@ public class ArtikliController {
 
 
         //actionColumn.setCellFactory(new DoubleButtonCellFactory<>());
+        actionColumn.setCellFactory(new DoubleButtonCellFactory(editEvent -> {
+            int quoteId = Integer.parseInt(((Button)editEvent.getSource()).getUserData().toString());
+          //  editArtikliScene(idArtikli);
+        }, (deleteEvent -> {
+            int quoteId = Integer.parseInt(((Button)deleteEvent.getSource()).getUserData().toString());
+           // deleteArtikli(idArtikli);
+        })));
     }
 
 }
