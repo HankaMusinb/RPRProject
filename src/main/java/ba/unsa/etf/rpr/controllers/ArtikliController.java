@@ -60,7 +60,7 @@ public class ArtikliController {
     }
 
     public void searchArtikli(ActionEvent event){
-        //     ArtikliTable.setItems(FXCollections.observableList(artikliManager.searchArticlePrice(searchArtikli(search.getPrefColumnCount());)));
+          // ArtikliTable.setItems(FXCollections.observableList(artikliManager.searchArticlePrice(searchArtikli(search.getDate());)));
         ArtikliTable.refresh();
     }
 
