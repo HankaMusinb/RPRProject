@@ -1,6 +1,7 @@
-package ba.unsa.etf.rpr.domain;
+package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
+import ba.unsa.etf.rpr.domain.Artikli;
 import ba.unsa.etf.rpr.exceptions.ArtikliException;
 
 import java.util.ArrayList;
