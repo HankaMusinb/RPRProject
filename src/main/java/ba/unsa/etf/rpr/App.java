@@ -3,11 +3,10 @@ package ba.unsa.etf.rpr;
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Artikli;
 import ba.unsa.etf.rpr.exceptions.ArtikliException;
+import org.apache.commons.cli.Option;
 
-import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * Hello world!
  *
@@ -19,7 +18,7 @@ public class App
      * Defining final variables to describe all code having options
      */
 
-    private static final Option addArtikal = new Option("Artikal","dodaj-artikal",false,"Dodavanje novog artikla");
+    private static final org.apache.commons.cli.Option addQuote = new Option("artikal","dodaj-artikal",false, "Adding new article");
 
 
     public static void main( String[] args ) throws ArtikliException {
