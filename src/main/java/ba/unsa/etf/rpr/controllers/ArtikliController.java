@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
 import java.util.Date;
@@ -37,6 +38,14 @@ public class ArtikliController {
 
     public TableColumn<Artikli, Integer> actionColumn;
 
+    public void initialize(){
+        idArtikli.setCellValueFactory(new PropertyValueFactory<Artikli, String>("id"));
+        artikliColumn.setCellValueFactory(new PropertyValueFactory<Artikli,String>("artikal"));
+        createdColumn.setCellValueFactory(new PropertyValueFactory<Artikli,Date>("created"));
+        actionColumn.setCellValueFactory(new PropertyValueFactory<Artikli,Integer>("id"));
 
+
+        //actionColumn.setCellFactory(new DoubleButtonCellFactory<>());
+    }
 
 }
