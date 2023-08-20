@@ -14,6 +14,7 @@ import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
  */
 
 public class AppFX extends Application {
+
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
