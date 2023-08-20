@@ -20,6 +20,7 @@ public class App
 
     private static final org.apache.commons.cli.Option addQuote = new Option("artikal","dodaj-artikal",false, "Adding new article");
 
+    private static final Option addCategory = new Option("c","add-category",false, "Adding new category");
 
     public static void main( String[] args ) throws ArtikliException {
 //        KategorijeDao kategorijeDao = DaoFactory.kategorijeDao();
