@@ -4,6 +4,7 @@ import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Artikli;
 import ba.unsa.etf.rpr.exceptions.ArtikliException;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,14 @@ import java.util.List;
  */
 public class App 
 {
+
+    /**
+     * Defining final variables to describe all code having options
+     */
+
+    private static final Option addArtikal = new Option("Artikal","dodaj-artikal",false,"Dodavanje novog artikla");
+
+
     public static void main( String[] args ) throws ArtikliException {
 //        KategorijeDao kategorijeDao = DaoFactory.kategorijeDao();
 //         // ArtikliDao artikliDao = DaoFactory.artikliDao();
