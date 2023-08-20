@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
+import java.awt.event.ActionEvent;
 import java.util.Date;
 
 /**
@@ -55,6 +56,27 @@ public class ArtikliController {
             int quoteId = Integer.parseInt(((Button)deleteEvent.getSource()).getUserData().toString());
            // deleteArtikli(idArtikli);
         })));
+        //updateArtikli();
     }
+
+    public void searchArtikli(ActionEvent event){
+        //     ArtikliTable.setItems(FXCollections.observableList(artikliManager.searchArticlePrice(searchArtikli(search.getPrefColumnCount());)));
+        ArtikliTable.refresh();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
