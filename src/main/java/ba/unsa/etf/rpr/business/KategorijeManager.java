@@ -45,6 +45,7 @@ public class KategorijeManager {
         }
     }
 
+
     public List<Kategorije> getAll() throws ArtikliException{
         return DaoFactory.kategorijeDao().getAll();
     }
