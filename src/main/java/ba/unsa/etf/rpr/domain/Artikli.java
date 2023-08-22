@@ -63,6 +63,7 @@ public class Artikli implements Idable {
         return id == artikli.id;
     }
 
+
     @Override
     public String toString() {
         return "Artikli{" +
