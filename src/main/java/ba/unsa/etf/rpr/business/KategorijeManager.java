@@ -33,6 +33,7 @@ public class KategorijeManager {
             throw e;
         }
     }
+
     public void delete(int kategorijeId) throws ArtikliException{
         try {
             DaoFactory.kategorijeDao().delete(kategorijeId);
