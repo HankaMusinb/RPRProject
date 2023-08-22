@@ -20,7 +20,9 @@ public class App
 
     private static final org.apache.commons.cli.Option addQuote = new Option("artikal","dodaj-artikal",false, "Adding new article");
 
+
     private static final Option addCategory = new Option("c","add-category",false, "Adding new category");
+
 
     private static final Option getArtikal = new Option("getA", "get-articles",false, "Printing all articles");
 

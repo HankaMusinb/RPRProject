@@ -9,6 +9,6 @@ public class ArtikliException extends Exception {
     }
     //password: *bcuN9B@#52h&qn
 
-  
+
 
 }
