@@ -50,6 +50,7 @@ public class KategorijeManager {
         return DaoFactory.kategorijeDao().getAll();
     }
 
+
     public Kategorije update(Kategorije kategorija) throws ArtikliException{
         validateCategoryName(kategorija.getKategorija());
         return DaoFactory.kategorijeDao().update(kategorija);
