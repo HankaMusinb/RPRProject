@@ -5,6 +5,8 @@ import java.util.Objects;
 
 
 public class Artikli implements Idable {
+
+    // Atributes
     private int id;
     private String naziv;
     private int cijena;
