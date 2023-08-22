@@ -45,5 +45,4 @@ public class ArtikliManager {
         DaoFactory.artikliDao().update(artikli);
     }
 
-
 }
