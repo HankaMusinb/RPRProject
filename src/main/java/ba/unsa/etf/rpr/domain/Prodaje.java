@@ -41,6 +41,7 @@ public class Prodaje implements Idable {
 
     //Hash, toString, equals methods
 
+
     @Override
     public String toString() {
         return "Prodaje{" +
