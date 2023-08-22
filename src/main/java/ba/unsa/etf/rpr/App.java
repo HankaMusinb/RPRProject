@@ -4,9 +4,6 @@ import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Kategorije;
 import ba.unsa.etf.rpr.exceptions.ArtikliException;
 import org.apache.commons.cli.Option;
-
-import java.util.ArrayList;
-import java.util.List;
 /**
  * Hello world!
  *
@@ -35,8 +32,10 @@ public class App
 //         // ArtikliDao artikliDao = DaoFactory.artikliDao();
 //        System.out.println(kategorijeDao.getById(2));
         try {
-            List<Kategorije> listaKategorija = new ArrayList<Kategorije>(DaoFactory.kategorijeDao().getAll());
-            System.out.println(listaKategorija);
+            Kategorije voce = new Kategorije();
+            DaoFactory.kategorijeDao().add(voce);
+           // List<Kategorije> listaKategorija = new ArrayList<Kategorije>(DaoFactory.kategorijeDao().getAll());
+         //   System.out.println(listaKategorija);
 
         } catch (ArtikliException e) {
             System.out.println("Nesto nije u redu sa getAll metodom!");
