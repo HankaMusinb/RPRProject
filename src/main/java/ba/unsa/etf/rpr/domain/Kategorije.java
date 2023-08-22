@@ -25,6 +25,8 @@ public class Kategorije implements Idable {
         this.kategorija = kategorija;
     }
 
+    //Hash, equals toString methods
+
     @Override
     public String toString() {
         return kategorija;
