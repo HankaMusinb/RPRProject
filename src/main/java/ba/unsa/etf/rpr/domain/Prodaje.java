@@ -50,6 +50,7 @@ public class Prodaje implements Idable {
                 '}';
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -57,6 +58,7 @@ public class Prodaje implements Idable {
         Prodaje prodaje = (Prodaje) o;
         return id == prodaje.id;
     }
+
 
     @Override
     public int hashCode() {
