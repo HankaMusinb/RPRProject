@@ -27,6 +27,7 @@ public class DoubleButtonCellFactory<T> implements Callback<TableColumn<T, T>, T
         this.buttonTwo = buttonTwo;
     }
 
+
     @Override
     public TableCell<T, T> call(TableColumn<T, T> quoteObjectTableColumn) {
         return new DoubleButtonTableCell<>(buttonOne, buttonTwo);
