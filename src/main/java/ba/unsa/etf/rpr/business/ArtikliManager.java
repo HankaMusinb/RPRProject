@@ -39,6 +39,8 @@ public class ArtikliManager {
     public Artikli add(Artikli a) throws ArtikliException{
         return DaoFactory.artikliDao().add(a);
     }
+
+
     public void update(Artikli artikli) throws ArtikliException{
         DaoFactory.artikliDao().update(artikli);
     }
