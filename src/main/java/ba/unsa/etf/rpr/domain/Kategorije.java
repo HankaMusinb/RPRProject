@@ -7,6 +7,7 @@ public class Kategorije implements Idable {
     //Atributes
     private int id;
     private String kategorija;
+    //Setters and Getters
 
     public int getId() {
         return id;
