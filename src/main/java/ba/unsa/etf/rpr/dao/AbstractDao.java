@@ -201,6 +201,9 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
             throw new ArtikliException("Problemi sa dovrsavanjem radnje");
         }
     }
+
+
+
     /**
      * Accepts KV storage of column names and return CSV of columns and question marks for insert statement
      * Example: (id, name, date) ?,?,?
