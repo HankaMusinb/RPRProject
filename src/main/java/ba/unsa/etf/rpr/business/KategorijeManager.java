@@ -17,6 +17,7 @@ public class KategorijeManager {
         if (name == null || name.length()>25 || name.length() < 3){
             throw new ArtikliException("Ime kategorije neodgovarajuce.");
         }
+
     }
     public Kategorije add(Kategorije kategorije) throws ArtikliException{
         if (kategorije.getId() != 0){
