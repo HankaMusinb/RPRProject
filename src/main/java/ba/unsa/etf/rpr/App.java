@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  * Hello world!
- *
+ * 
  */
 public class App 
 {
@@ -28,6 +28,7 @@ public class App
 
 
     private static final Option getCategories = new Option("getC", "get-categories",false, "Printing all categories");
+
     public static void main( String[] args ) throws ArtikliException {
 //        KategorijeDao kategorijeDao = DaoFactory.kategorijeDao();
 //         // ArtikliDao artikliDao = DaoFactory.artikliDao();
