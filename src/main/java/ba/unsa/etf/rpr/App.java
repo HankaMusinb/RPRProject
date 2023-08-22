@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  * Hello world!
- * @author
+ * @author Hanka Musinbegovic
  */
 public class App 
 {
