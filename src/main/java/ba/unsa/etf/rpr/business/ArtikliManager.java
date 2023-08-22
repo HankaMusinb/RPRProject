@@ -25,6 +25,7 @@ public class ArtikliManager {
         return DaoFactory.artikliDao().getById(artikliId);
     }
 
+
     public List<Artikli> getAll() throws ArtikliException{
         return DaoFactory.artikliDao().getAll();
     }
