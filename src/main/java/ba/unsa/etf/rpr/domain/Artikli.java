@@ -54,6 +54,7 @@ public class Artikli implements Idable {
         return Objects.hash(id, naziv, cijena, kategorija, istekRoka);
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
