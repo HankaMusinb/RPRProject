@@ -9,6 +9,7 @@ import javafx.util.Callback;
 /**
  * Double button cell factory for creation of buttons for each cell in the table
  * @param <T>
+ * @author Hanka Musinbegovic
  */
 public class DoubleButtonCellFactory<T> implements Callback<TableColumn<T, T>, TableCell<T, T>> {
 
