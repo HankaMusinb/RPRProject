@@ -18,6 +18,7 @@ public class ArtikliManager {
 
     public List<Artikli> searchArticlePrice(Integer text) throws ArtikliException{
         return DaoFactory.artikliDao().traziPoCijeni(text);
+
     }
 
     public Artikli getById(int artikliId) throws ArtikliException{
