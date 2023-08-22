@@ -56,5 +56,4 @@ public class KategorijeManager {
         return DaoFactory.kategorijeDao().update(kategorija);
     }
 
-
 }
