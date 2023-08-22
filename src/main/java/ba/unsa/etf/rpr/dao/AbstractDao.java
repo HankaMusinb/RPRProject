@@ -185,6 +185,8 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
             throw new ArtikliException("Problemi sa executequery metodom");
         }
     }
+
+
     /**
      * Utility for query execution that always return single record
      * @param query - query that returns single record
