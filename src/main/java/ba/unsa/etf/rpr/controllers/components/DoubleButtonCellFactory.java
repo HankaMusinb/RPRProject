@@ -22,6 +22,7 @@ public class DoubleButtonCellFactory<T> implements Callback<TableColumn<T, T>, T
      * @param buttonOne - event handler for first button (Edit)
      * @param buttonTwo - event handler for second button (Delete)
      */
+
     public DoubleButtonCellFactory(EventHandler<ActionEvent> buttonOne, EventHandler<ActionEvent> buttonTwo){
         this.buttonOne = buttonOne;
         this.buttonTwo = buttonTwo;
