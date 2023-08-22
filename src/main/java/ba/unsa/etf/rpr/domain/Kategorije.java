@@ -4,6 +4,7 @@ import java.util.Objects;
 
 
 public class Kategorije implements Idable {
+    //Atributes
     private int id;
     private String kategorija;
 
