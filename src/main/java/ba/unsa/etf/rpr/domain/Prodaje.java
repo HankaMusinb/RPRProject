@@ -7,6 +7,7 @@ import java.util.Objects;
  * @author Hanka Musinbegovic
  */
 public class Prodaje implements Idable {
+
     //Atributes
     private int id;
     private Artikli artikal;
