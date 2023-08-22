@@ -159,6 +159,8 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
             throw new ArtikliException("Problem s update metodom", e);
         }
     }
+
+
     /**
      * Utility method for executing any kind of query
      * @param query - SQL query
