@@ -26,6 +26,7 @@ public class App
 
     private static final Option getArtikal = new Option("getA", "get-articles",false, "Printing all articles");
 
+
     private static final Option getCategories = new Option("getC", "get-categories",false, "Printing all categories");
     public static void main( String[] args ) throws ArtikliException {
 //        KategorijeDao kategorijeDao = DaoFactory.kategorijeDao();
