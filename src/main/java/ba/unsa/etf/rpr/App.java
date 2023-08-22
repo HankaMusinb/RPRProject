@@ -1,7 +1,7 @@
 package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
-import ba.unsa.etf.rpr.domain.Artikli;
+import ba.unsa.etf.rpr.domain.Prodaje;
 import ba.unsa.etf.rpr.exceptions.ArtikliException;
 import org.apache.commons.cli.Option;
 
@@ -38,7 +38,7 @@ public class App
         try {
            // Kategorije voce = new Kategorije();
             //DaoFactory.kategorijeDao().add(voce);
-           List<Artikli> listaKategorija = new ArrayList<Artikli>(DaoFactory.artikliDao().getAll());
+           List<Prodaje> listaKategorija = new ArrayList<Prodaje>(DaoFactory.prodajeDao().getAll());
            System.out.println(listaKategorija);
 
         } catch (ArtikliException e) {
