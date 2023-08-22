@@ -34,6 +34,8 @@ public class ArtikliManager {
     public void delete(int id) throws ArtikliException{
         DaoFactory.artikliDao().delete(id);
     }
+
+
     public Artikli add(Artikli a) throws ArtikliException{
         return DaoFactory.artikliDao().add(a);
     }
