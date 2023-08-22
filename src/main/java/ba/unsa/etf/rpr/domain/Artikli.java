@@ -13,6 +13,7 @@ public class Artikli implements Idable {
     private Kategorije kategorija;
     private Date istekRoka;
 
+    //Setters and getters
     public int getId() {
         return id;
     }
