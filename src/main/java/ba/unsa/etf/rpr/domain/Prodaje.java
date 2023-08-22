@@ -11,6 +11,7 @@ public class Prodaje implements Idable {
     private int id;
     private Artikli artikal;
     private int zarada;
+
     //Setters and getters
 
     public int getId() {
