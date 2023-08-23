@@ -1,9 +1,12 @@
 package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
-import ba.unsa.etf.rpr.domain.Prodaje;
+import ba.unsa.etf.rpr.domain.Kategorije;
 import ba.unsa.etf.rpr.exceptions.ArtikliException;
 import org.apache.commons.cli.Option;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Hello world!
@@ -33,12 +36,14 @@ public class App
 //         // ArtikliDao artikliDao = DaoFactory.artikliDao();
 //        System.out.println(kategorijeDao.getById(2));
         try {
-            Prodaje zaradamesa = new Prodaje();
-            zaradamesa.setId(1);
-            zaradamesa.setZarada(50);
-            DaoFactory.prodajeDao().add(zaradamesa);
+         //   Prodaje zaradamesa = new Prodaje();
+           // zaradamesa.setId(1);
+            //zaradamesa.setZarada(50);
+           // DaoFactory.prodajeDao().add(zaradamesa);
        //    List<Prodaje> listaKategorija = new ArrayList<Prodaje>(DaoFactory.prodajeDao().getAll());
          //  System.out.println(listaKategorija);
+            List<Kategorije> listaKategorija = new ArrayList<Kategorije>(DaoFactory.kategorijeDao().getAll());
+             System.out.println(listaKategorija);
 
         } catch (ArtikliException e) {
             System.out.println("Nesto nije u redu sa add metodom!");
