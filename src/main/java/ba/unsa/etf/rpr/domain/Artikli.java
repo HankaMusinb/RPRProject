@@ -13,6 +13,8 @@ public class Artikli implements Idable {
     private Kategorije kategorija;
     private Date istekRoka;
 
+    private Prodaje prodaja;
+
     //Setters and getters
     public int getId() {
         return id;
@@ -54,6 +56,15 @@ public class Artikli implements Idable {
         this.istekRoka = istekRoka;
     }
     //Hash, equals, toString methods
+
+    public Prodaje getProdaja() {
+        return prodaja;
+    }
+
+    public void setProdaja(Prodaje prodaja) {
+        this.prodaja = prodaja;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(id, naziv, cijena, kategorija, istekRoka);
