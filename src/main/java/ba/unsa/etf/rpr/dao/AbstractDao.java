@@ -188,6 +188,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
         }
         return columns.toString();
     }
+
     public T add(T item) throws ArtikliException{
         Map<String, Object> row = object2row(item);
         Map.Entry<String, String> columns = prepareInsertParts(row);
