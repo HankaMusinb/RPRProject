@@ -60,9 +60,9 @@ public class App
 
 
     public static void main( String[] args ) throws ArtikliException {
-//        KategorijeDao kategorijeDao = DaoFactory.kategorijeDao();
-//         // ArtikliDao artikliDao = DaoFactory.artikliDao();
-//        System.out.println(kategorijeDao.getById(2));
+     /*   //        KategorijeDao kategorijeDao = DaoFactory.kategorijeDao();
+        //         // ArtikliDao artikliDao = DaoFactory.artikliDao();
+        //        System.out.println(kategorijeDao.getById(2));
         try {
          //   Prodaje zaradamesa = new Prodaje();
            // zaradamesa.setId(1);
@@ -73,7 +73,7 @@ public class App
             /*Radi ispis kategorija
             List<Kategorije> listaKategorija = new ArrayList<Kategorije>(DaoFactory.kategorijeDao().getAll());
              System.out.println(listaKategorija);*/
-            Kategorije voce = DaoFactory.kategorijeDao().getById(2);
+          /*  Kategorije voce = DaoFactory.kategorijeDao().getById(2);
             Artikli cokolada = new Artikli();
 
             cokolada.setKategorija(voce);
@@ -83,8 +83,29 @@ public class App
             System.out.println("Nesto nije u redu sa add metodom!");
             throw new RuntimeException(e);
 
-        }
-       // System.out.println( "Hello World!" );
+        }*/
+       // System.out.println( "Hello World!" );*/
+
+        Options options = addOptions();
+
+        CommandLineParser commandLineParser = new DefaultParser();
+
+        CommandLine cl = commandLineParser.parse(options, args);
+
+        if((cl.hasOption(addArtikal.getOpt()) || cl.hasOption(addArtikal.getLongOpt())) && cl.getArgList().get(1));
+            ArtikliManager artikliManager = new ArtikliManager();
+            KategorijeManager kategorijeManager = new KategorijeManager();
+            Kategorije kategorije = null;
+            try{
+                kategorije = searchThroughCategories(kategorijeManager.getAll(), cl.getArgList().get(1));
+
+            }catch (Exception e){
+                System.out.println("There is no category in the list! Try again.");
+                System.exit(1);
+            }
+
+
+
 
     }
 }
