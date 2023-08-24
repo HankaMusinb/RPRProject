@@ -60,31 +60,31 @@ public class App
 
 
     public static void main( String[] args ) throws ArtikliException {
-     /*   //        KategorijeDao kategorijeDao = DaoFactory.kategorijeDao();
+       //        KategorijeDao kategorijeDao = DaoFactory.kategorijeDao();
         //         // ArtikliDao artikliDao = DaoFactory.artikliDao();
         //        System.out.println(kategorijeDao.getById(2));
         try {
-         //   Prodaje zaradamesa = new Prodaje();
-           // zaradamesa.setId(1);
-            //zaradamesa.setZarada(50);
-           // DaoFactory.prodajeDao().add(zaradamesa);
+         Prodaje zaradamesa = new Prodaje();
+
+            zaradamesa.setZarada(50);
+           DaoFactory.prodajeDao().add(zaradamesa);
        //    List<Prodaje> listaKategorija = new ArrayList<Prodaje>(DaoFactory.prodajeDao().getAll());
          //  System.out.println(listaKategorija);
-            /*Radi ispis kategorija
-            List<Kategorije> listaKategorija = new ArrayList<Kategorije>(DaoFactory.kategorijeDao().getAll());
-             System.out.println(listaKategorija);*/
-          /*  Kategorije voce = DaoFactory.kategorijeDao().getById(2);
-            Artikli cokolada = new Artikli();
+           // Radi ispis kategorija
+           // List<Kategorije> listaKategorija = new ArrayList<Kategorije>(DaoFactory.kategorijeDao().getAll());
+          //   System.out.println(listaKategorija);
+         //   Kategorije voce = DaoFactory.kategorijeDao().getById(2);
+         //   Artikli cokolada = new Artikli();
 
-            cokolada.setKategorija(voce);
-            DaoFactory.artikliDao().add(cokolada);
+          //  cokolada.setKategorija(voce);
+          //  DaoFactory.artikliDao().add(cokolada);
 
         } catch (ArtikliException e) {
             System.out.println("Nesto nije u redu sa add metodom!");
             throw new RuntimeException(e);
 
-        }*/
-       // System.out.println( "Hello World!" );*/
+        }
+       // System.out.println( "Hello World!" );
 
         Options options = addOptions();
 
