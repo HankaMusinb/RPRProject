@@ -39,7 +39,6 @@ public class Prodaje implements Idable {
     public String toString() {
         return "Prodaje{" +
                 "id=" + id +
-                ", artikal=" + artikal +
                 ", zarada=" + zarada +
                 '}';
     }
@@ -56,6 +55,6 @@ public class Prodaje implements Idable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, artikal, zarada);
+        return Objects.hash(id, zarada);
     }
 }
