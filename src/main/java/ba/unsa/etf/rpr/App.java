@@ -1,10 +1,17 @@
 package ba.unsa.etf.rpr;
 
-import ba.unsa.etf.rpr.dao.DaoFactory;
+import ba.unsa.etf.rpr.business.ArtikliManager;
+import ba.unsa.etf.rpr.business.KategorijeManager;
 import ba.unsa.etf.rpr.domain.Artikli;
 import ba.unsa.etf.rpr.domain.Kategorije;
+import ba.unsa.etf.rpr.domain.Prodaje;
 import ba.unsa.etf.rpr.exceptions.ArtikliException;
-import org.apache.commons.cli.Option;
+import org.apache.commons.cli.*;
+
+import java.io.PrintWriter;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Hello world!
@@ -29,7 +36,7 @@ public class App
 
     private static final Option getCategories = new Option("getC", "get-categories",false, "Printing all categories");
 
-
+    private static final Option categoryDefinition = new Option(null, "category",false, "Defining category for next added article");
 
 
 
@@ -53,17 +60,17 @@ public class App
     public static Kategorije searchThroughCategories(List<Kategorije> listOfCategories, String categoryName) {
 
         Kategorije category = null;
-        category = listOfCategories.stream().filter(cat -> cat.getName().toLowerCase().equals(categoryName.toLowerCase())).findAny().get();
+        category = listOfCategories.stream().filter(cat -> cat.getKategorija().toLowerCase().equals(categoryName.toLowerCase())).findAny().get();
         return category;
 
     }
 
 
-    public static void main( String[] args ) throws ArtikliException {
+    public static void main( String[] args ) throws ArtikliException, ParseException {
        //        KategorijeDao kategorijeDao = DaoFactory.kategorijeDao();
         //         // ArtikliDao artikliDao = DaoFactory.artikliDao();
         //        System.out.println(kategorijeDao.getById(2));
-        try {
+    /*    try {
          Prodaje zaradamesa = new Prodaje();
 
             zaradamesa.setZarada(50);
@@ -83,7 +90,7 @@ public class App
             System.out.println("Nesto nije u redu sa add metodom!");
             throw new RuntimeException(e);
 
-        }
+        }*/
        // System.out.println( "Hello World!" );
 
         Options options = addOptions();
@@ -92,7 +99,7 @@ public class App
 
         CommandLine cl = commandLineParser.parse(options, args);
 
-        if((cl.hasOption(addArtikal.getOpt()) || cl.hasOption(addArtikal.getLongOpt())) && cl.getArgList().get(1));
+        if((cl.hasOption(addArtikal.getOpt()) || cl.hasOption(addArtikal.getLongOpt())) && cl.hasOption((categoryDefinition.getLongOpt()))){
             ArtikliManager artikliManager = new ArtikliManager();
             KategorijeManager kategorijeManager = new KategorijeManager();
             Kategorije kategorije = null;
@@ -103,7 +110,7 @@ public class App
                 System.out.println("There is no category in the list! Try again.");
                 System.exit(1);
             }
-        Artikal artikal = new Artikal();
+        Artikli artikal = new Artikli();
         artikal.setKategorija(kategorije);
         artikal.setNaziv(cl.getArgList().get(0));
         artikal.setIstekRoka(Date.valueOf(LocalDate.now()));
@@ -115,7 +122,11 @@ public class App
         System.out.println("You successfully added artikal to database!");
     } else if(cl.hasOption(getArtikle.getOpt()) || cl.hasOption(getArtikle.getLongOpt())){
     ArtikliManager artikliManager = new ArtikliManager();
-   artikliManager.getAll().forEach(q -> System.out.println(q.getArtikle()));
+    try {
+        artikliManager.getAll().forEach(q -> System.out.println(q.getNaziv()));
+    } catch (ArtikliException e) {
+        throw new RuntimeException(e);
+    }
 //                break;
 } else if(cl.hasOption(addCategory.getOpt()) || cl.hasOption(addCategory.getLongOpt())){
     try {
@@ -133,7 +144,11 @@ public class App
 
 } else if(cl.hasOption(getCategories.getOpt()) || cl.hasOption(getCategories.getLongOpt())){
     KategorijeManager kategorijeManager = new KategorijeManager();
-    kategorijeManager.getAll().forEach(c -> System.out.println(c.getKategorija()));
+    try {
+        kategorijeManager.getAll().forEach(c -> System.out.println(c.getKategorija()));
+    } catch (ArtikliException e) {
+        throw new RuntimeException(e);
+    }
 //                break;
 } else {
     printFormattedOptions(options);
