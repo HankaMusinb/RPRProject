@@ -39,7 +39,7 @@ public class ProdajeDaoSQLImpl extends AbstractDao<Prodaje> implements ProdajeDa
             Prodaje prodaje = new Prodaje();
             prodaje.setId(rs.getInt("id"));
             prodaje.setZarada(rs.getInt("zarada"));
-            prodaje.setArtikal(DaoFactory.artikliDao().getById(rs.getInt("idArtikla")));
+
 
             return prodaje;
         }catch (SQLException e){
@@ -58,7 +58,7 @@ public class ProdajeDaoSQLImpl extends AbstractDao<Prodaje> implements ProdajeDa
         Map<String,Object> item = new TreeMap<>();
         item.put("id", object.getId());
         item.put("zarada", object.getZarada());
-        item.put("idArtikla",object.getArtikal().getId());
+
         return item;
     }
     /**
