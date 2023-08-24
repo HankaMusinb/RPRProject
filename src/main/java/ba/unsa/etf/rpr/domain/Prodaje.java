@@ -10,7 +10,6 @@ public class Prodaje implements Idable {
 
     //Atributes
     private int id;
-    private Artikli artikal;
     private int zarada;
 
     //Setters and getters
@@ -23,13 +22,7 @@ public class Prodaje implements Idable {
         this.id = id;
     }
 
-    public Artikli getArtikal() {
-        return artikal;
-    }
 
-    public void setArtikal(Artikli artikal) {
-        this.artikal = artikal;
-    }
 
     public int getZarada() {
         return zarada;
