@@ -218,6 +218,8 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
         }
     }
 
+
+
     public T update(T item) throws ArtikliException{
         Map<String, Object> row = object2row(item);
         String updateColumns = prepareUpdateParts(row);
