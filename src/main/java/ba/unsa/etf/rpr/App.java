@@ -54,6 +54,7 @@ public class App
         options.addOption(addCategory);
         options.addOption(getArtikle);
         options.addOption(getCategories);
+        options.addOption(categoryDefinition);
         return options;
     }
 
@@ -127,33 +128,34 @@ public class App
     } catch (ArtikliException e) {
         throw new RuntimeException(e);
     }
-//                break;
-} else if(cl.hasOption(addCategory.getOpt()) || cl.hasOption(addCategory.getLongOpt())){
+        //                break;
+    } else if(cl.hasOption(addCategory.getOpt()) || cl.hasOption(addCategory.getLongOpt())){
     try {
         KategorijeManager kategorijeManager = new KategorijeManager();
         Kategorije cat = new Kategorije();
         cat.setKategorija(cl.getArgList().get(0));
         kategorijeManager.add(cat);
         System.out.println("Category has been added successfully");
-//                    break;
+        //                    break;
     }catch(Exception e) {
         System.out.println("There is already category with same name in database! Try again");
         System.exit(1);
-//                   break;
+        //                   break;
     }
 
-} else if(cl.hasOption(getCategories.getOpt()) || cl.hasOption(getCategories.getLongOpt())){
+    } else if(cl.hasOption(getCategories.getOpt()) || cl.hasOption(getCategories.getLongOpt())){
     KategorijeManager kategorijeManager = new KategorijeManager();
     try {
         kategorijeManager.getAll().forEach(c -> System.out.println(c.getKategorija()));
     } catch (ArtikliException e) {
         throw new RuntimeException(e);
     }
-//                break;
-} else {
+            //                break;
+    } else {
+
     printFormattedOptions(options);
     System.exit(-1);
-//                break;
+            //                break;
 }
 //        }
 

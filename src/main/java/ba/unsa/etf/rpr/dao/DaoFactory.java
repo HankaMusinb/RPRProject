@@ -27,7 +27,6 @@ public class DaoFactory {
     public static KategorijeDao kategorijeDao(){
         return kategorijeDao;
     }
-
     public static ProdajeDao prodajeDao(){
         return prodajeDao;
     }
