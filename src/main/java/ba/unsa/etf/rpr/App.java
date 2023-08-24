@@ -29,6 +29,36 @@ public class App
 
     private static final Option getCategories = new Option("getC", "get-categories",false, "Printing all categories");
 
+
+
+
+
+    public static void printFormattedOptions(Options options) {
+        HelpFormatter helpFormatter = new HelpFormatter();
+        PrintWriter printWriter = new PrintWriter(System.out);
+        helpFormatter.printUsage(printWriter, 150, "java -jar RPRProject-0.1.jar [option] 'something else if needed' ");
+        helpFormatter.printOptions(printWriter, 150, options, 2, 7);
+        printWriter.close();
+    }
+
+    public static Options addOptions() {
+        Options options = new Options();
+        options.addOption(addArtikal);
+        options.addOption(addCategory);
+        options.addOption(getArtikle);
+        options.addOption(getCategories);
+        return options;
+    }
+
+    public static Kategorije searchThroughCategories(List<Kategorije> listOfCategories, String categoryName) {
+
+        Kategorije category = null;
+        category = listOfCategories.stream().filter(cat -> cat.getName().toLowerCase().equals(categoryName.toLowerCase())).findAny().get();
+        return category;
+
+    }
+
+
     public static void main( String[] args ) throws ArtikliException {
 //        KategorijeDao kategorijeDao = DaoFactory.kategorijeDao();
 //         // ArtikliDao artikliDao = DaoFactory.artikliDao();
