@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.domain;
 
 import java.util.Date;
+import java.util.Objects;
 
 
 public class Artikli implements Idable {
@@ -79,7 +80,16 @@ public class Artikli implements Idable {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Artikli artikli = (Artikli) o;
+        return id == artikli.id && cijena == artikli.cijena && Objects.equals(naziv, artikli.naziv) && Objects.equals(kategorija, artikli.kategorija) && Objects.equals(istekRoka, artikli.istekRoka) && Objects.equals(prodaje, artikli.prodaje);
+    }
 
-
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, naziv, cijena, kategorija, istekRoka, prodaje);
+    }
 }

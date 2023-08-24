@@ -35,7 +35,7 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliD
 //            Kategorije k = DaoFactory.kategorijeDao().getById(i);
 //            a.setKategorija(k);
             a.setKategorija(DaoFactory.kategorijeDao().getById(rs.getInt("idKategorije")));
-            //a.setProdaje(DaoFactory.prodajeDao().getById(rs.getInt("idProdaje")));
+            a.setProdaje(DaoFactory.prodajeDao().getById(rs.getInt("idProdaje")));
             return a;
         } catch (Exception e) {
             throw new ArtikliException("Problem sa row2object u ArtikliDaoSQLImpl");
@@ -53,6 +53,7 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliD
         artikal.put("cijena",object.getCijena());
         artikal.put("istekRoka",object.getIstekRoka());
         artikal.put("idKategorije", object.getKategorija().getId());
+        artikal.put("idProdaje",object.getProdaje().getId());
         return artikal;
     }
     @Override
