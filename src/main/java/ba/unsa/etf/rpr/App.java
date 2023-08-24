@@ -103,9 +103,44 @@ public class App
                 System.out.println("There is no category in the list! Try again.");
                 System.exit(1);
             }
+        Artikal artikal = new Artikal();
+        artikal.setKategorija(kategorije);
+        artikal.setNaziv(cl.getArgList().get(0));
+        artikal.setIstekRoka(Date.valueOf(LocalDate.now()));
+        artikal.setCijena(5);
+        Prodaje prodaja = new Prodaje();
+        prodaja.setZarada(0);
+        artikal.setProdaje(prodaja);
+        artikliManager.add(artikal);
+        System.out.println("You successfully added artikal to database!");
+    } else if(cl.hasOption(getArtikle.getOpt()) || cl.hasOption(getArtikle.getLongOpt())){
+    ArtikliManager artikliManager = new ArtikliManager();
+   artikliManager.getAll().forEach(q -> System.out.println(q.getArtikle()));
+//                break;
+} else if(cl.hasOption(addCategory.getOpt()) || cl.hasOption(addCategory.getLongOpt())){
+    try {
+        KategorijeManager kategorijeManager = new KategorijeManager();
+        Kategorije cat = new Kategorije();
+        cat.setKategorija(cl.getArgList().get(0));
+        kategorijeManager.add(cat);
+        System.out.println("Category has been added successfully");
+//                    break;
+    }catch(Exception e) {
+        System.out.println("There is already category with same name in database! Try again");
+        System.exit(1);
+//                   break;
+    }
 
-
-
+} else if(cl.hasOption(getCategories.getOpt()) || cl.hasOption(getCategories.getLongOpt())){
+    KategorijeManager kategorijeManager = new KategorijeManager();
+    kategorijeManager.getAll().forEach(c -> System.out.println(c.getKategorija()));
+//                break;
+} else {
+    printFormattedOptions(options);
+    System.exit(-1);
+//                break;
+}
+//        }
 
     }
 }
