@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" build-on-make="true" name="RPRProject:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/RPRProject_jar</output-path>
+    <output-path>$PROJECT_DIR$/target/RPRProject_jar</output-path>
     <root id="archive" name="RPRProject.jar">
       <element id="module-output" name="RPRProject" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/maven/shared/maven-shared-utils/0.6/maven-shared-utils-0.6.jar" path-in-jar="/" />
