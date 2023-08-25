@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.business.ArtikliManager;
 import ba.unsa.etf.rpr.business.KategorijeManager;
+import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Artikli;
 import ba.unsa.etf.rpr.domain.Kategorije;
 import ba.unsa.etf.rpr.domain.Prodaje;
@@ -11,6 +12,7 @@ import org.apache.commons.cli.*;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -71,16 +73,22 @@ public class App
        //        KategorijeDao kategorijeDao = DaoFactory.kategorijeDao();
         //         // ArtikliDao artikliDao = DaoFactory.artikliDao();
         //        System.out.println(kategorijeDao.getById(2));
-    /*    try {
-         Prodaje zaradamesa = new Prodaje();
+       try {
+       //  Prodaje zaradamesa = new Prodaje();
 
-            zaradamesa.setZarada(50);
-           DaoFactory.prodajeDao().add(zaradamesa);
-       //    List<Prodaje> listaKategorija = new ArrayList<Prodaje>(DaoFactory.prodajeDao().getAll());
-         //  System.out.println(listaKategorija);
-           // Radi ispis kategorija
+       //     zaradamesa.setZarada(50);
+        //   DaoFactory.prodajeDao().add(zaradamesa);
+           //-------------------------------------------------------
+          List<Prodaje> listaKategorija = new ArrayList<Prodaje>(DaoFactory.prodajeDao().getAll());
+           System.out.println(listaKategorija);
+           // Radi ispis prodaja
+           //--------------------------------------------------------------------------------
+
            // List<Kategorije> listaKategorija = new ArrayList<Kategorije>(DaoFactory.kategorijeDao().getAll());
           //   System.out.println(listaKategorija);
+           // Radu ispis kategorija
+
+           //---------------------------------------------
          //   Kategorije voce = DaoFactory.kategorijeDao().getById(2);
          //   Artikli cokolada = new Artikli();
 
@@ -91,12 +99,12 @@ public class App
             System.out.println("Nesto nije u redu sa add metodom!");
             throw new RuntimeException(e);
 
-        }*/
+        }
        // System.out.println( "Hello World!" );
 
         Options options = addOptions();
 
-        CommandLineParser commandLineParser = new DefaultParser();
+        CommandLineParser commandLineParser = new DefaultParser(); //<- This may be the problem
 
         CommandLine cl = commandLineParser.parse(options, args);
 
