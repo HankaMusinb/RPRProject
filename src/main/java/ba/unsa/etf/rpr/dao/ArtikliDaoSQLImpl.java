@@ -80,4 +80,7 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli> implements ArtikliDa
         return executeQuery("SELECT * FROM Artikli WHERE cijena = ?", new Object[]{cijena});
     }
 
+
+
+
 }

@@ -63,8 +63,8 @@ public class App {
 
 
     public static void main(String[] args) throws ArtikliException, ParseException {
-        testKategorije();
-        testArtikli();
+       // testKategorije();
+        //testArtikli();
 //
 //        Options options = addOptions();
 //
@@ -131,68 +131,75 @@ public class App {
 //            //                break;
 //        }
 //        }
+      //  List<Kategorije> listaKategorija = new ArrayList<>(DaoFactory.kategorijeDao().getAll());
+       // DaoFactory.kategorijeDao().delete(listaKategorija.stream().filter(k -> k.getKategorija().equals("povrce")).findAny().get().getId());
+  //      DaoFactory.kategorijeDao().delete(listaKategorija.stream().filter(k -> k.getKategorija().equals("sirevi")).findAny().get().getId());
 
+       // System.out.println(listaKategorija);
+        List<Artikli> listaArtikala = new ArrayList<>(DaoFactory.artikliDao().getAll());
+        System.out.println(listaArtikala);
     }
 
     static void testKategorije() throws ArtikliException {
         List<Kategorije> listaKategorija = new ArrayList<>(DaoFactory.kategorijeDao().getAll());
         System.out.println(listaKategorija);
-        if (listaKategorija.stream().noneMatch(k -> k.getKategorija().equals("Voce"))) {
-            System.out.println("Nema voce u bazi");
+        if (listaKategorija.stream().noneMatch(k -> k.getKategorija().equals("Slatki program"))) {
+            System.out.println("Nema Slatki program u bazi");
             Kategorije voce = new Kategorije();
-            voce.setKategorija("Voce");
+            voce.setKategorija("Slatki program");
             DaoFactory.kategorijeDao().add(voce);
             listaKategorija = new ArrayList<>(DaoFactory.kategorijeDao().getAll());
             System.out.println(listaKategorija);
-            if (listaKategorija.stream().noneMatch(k -> k.getKategorija().equals("Voce"))) {
-                System.out.println("Nije dodato voce");
+            if (listaKategorija.stream().noneMatch(k -> k.getKategorija().equals("Slatki program"))) {
+                System.out.println("Nije dodato Slatki program");
             } else {
-                System.out.println("Uspjesno dodato voce, brisemo ga");
-                DaoFactory.kategorijeDao().delete(listaKategorija.stream().filter(k -> k.getKategorija().equals("Voce")).findAny().get().getId());
+                System.out.println("Uspjesno dodato Slatki program");
+               // DaoFactory.kategorijeDao().delete(listaKategorija.stream().filter(k -> k.getKategorija().equals("Voce")).findAny().get().getId());
             }
         } else {
-            System.out.println("Ima voce u bazi, brisemo ga");
-            DaoFactory.kategorijeDao().delete(listaKategorija.stream().filter(k -> k.getKategorija().equals("Voce")).findAny().get().getId());
+            System.out.println("Ima Slatki program u bazi, brisemo ga");
+            DaoFactory.kategorijeDao().delete(listaKategorija.stream().filter(k -> k.getKategorija().equals("MSlatki program")).findAny().get().getId());
         }
+
     }
 
     static void testArtikli() throws ArtikliException {
         List<Artikli> listaArtikala = new ArrayList<>(DaoFactory.artikliDao().getAll());
         System.out.println(listaArtikala);
-        if (listaArtikala.stream().noneMatch(a -> a.getNaziv().equals("Jabuka"))) {
+        if (listaArtikala.stream().noneMatch(a -> a.getNaziv().equals("Kurkuma"))) {
             ArrayList<Kategorije> listaKategorija = new ArrayList<>(DaoFactory.kategorijeDao().getAll());
             Kategorije voce;
-            if (listaKategorija.stream().noneMatch(k -> k.getKategorija().equals("Voce"))) {
-                voce = new Kategorije("Voce");
+            if (listaKategorija.stream().noneMatch(k -> k.getKategorija().equals("Zacini"))) {
+                voce = new Kategorije("Zacini");
                 DaoFactory.kategorijeDao().add(voce);
             } else {
-                voce = listaKategorija.stream().filter(k -> k.getKategorija().equals("Voce")).findAny().get();
+                voce = listaKategorija.stream().filter(k -> k.getKategorija().equals("Zacini")).findAny().get();
             }
 
-            Prodaje prodaja = new Prodaje();
-            prodaja.setZarada(2);
-            DaoFactory.prodajeDao().add(prodaja);
+            Prodaje prodaja_kurkume = new Prodaje();
+            prodaja_kurkume.setZarada(15);
+            DaoFactory.prodajeDao().add(prodaja_kurkume);
 
-            System.out.println("Nema jabuka u bazi");
+            System.out.println("Nema paradajza u bazi");
             Artikli jabuka = new Artikli();
-            jabuka.setNaziv("Jabuka");
-            jabuka.setCijena(1);
+            jabuka.setNaziv("Kurkuma");
+            jabuka.setCijena(20);
             jabuka.setKategorija(voce);
-            jabuka.setProdaje(prodaja);
+            jabuka.setProdaje(prodaja_kurkume);
             jabuka.setIstekRoka(Date.valueOf(LocalDate.now()));
 
             DaoFactory.artikliDao().add(jabuka);
             listaArtikala = new ArrayList<>(DaoFactory.artikliDao().getAll());
             System.out.println(listaArtikala);
-            if (listaArtikala.stream().noneMatch(a -> a.getNaziv().equals("Jabuka"))) {
+            if (listaArtikala.stream().noneMatch(a -> a.getNaziv().equals("Kurkuma"))) {
                 System.out.println("Nije dodata jabuka");
             } else {
                 System.out.println("Uspjesno dodata jabuka, brisemo je");
-                DaoFactory.artikliDao().delete(listaArtikala.stream().filter(a -> a.getNaziv().equals("Jabuka")).findAny().get().getId());
+              //  DaoFactory.artikliDao().delete(listaArtikala.stream().filter(a -> a.getNaziv().equals("Jabuka")).findAny().get().getId());
             }
         } else {
             System.out.println("Ima jabuka u bazi, brisemo je");
-            DaoFactory.artikliDao().delete(listaArtikala.stream().filter(a -> a.getNaziv().equals("Jabuka")).findAny().get().getId());
+        //    DaoFactory.artikliDao().delete(listaArtikala.stream().filter(a -> a.getNaziv().equals("Jabuka")).findAny().get().getId());
         }
     }
 

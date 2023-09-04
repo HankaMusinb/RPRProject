@@ -22,4 +22,6 @@ public interface ArtikliDao extends Dao<Artikli> {
      */
     List<Artikli> traziPoCijeni(int cijena) throws ArtikliException;
 
+
+
 }
