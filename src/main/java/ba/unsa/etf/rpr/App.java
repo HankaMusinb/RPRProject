@@ -136,8 +136,8 @@ public class App {
   //      DaoFactory.kategorijeDao().delete(listaKategorija.stream().filter(k -> k.getKategorija().equals("sirevi")).findAny().get().getId());
 
        // System.out.println(listaKategorija);
-        List<Artikli> listaArtikala = new ArrayList<>(DaoFactory.artikliDao().getAll());
-        System.out.println(listaArtikala);
+       // List<Artikli> listaArtikala = new ArrayList<>(DaoFactory.artikliDao().getAll());
+        //System.out.println(listaArtikala);
     }
 
     static void testKategorije() throws ArtikliException {
