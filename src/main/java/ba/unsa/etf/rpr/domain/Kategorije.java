@@ -2,11 +2,17 @@ package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
-
 public class Kategorije implements Idable {
     //Atributes
     private int id;
     private String kategorija;
+
+    public Kategorije() {
+    }
+
+    public Kategorije(String voce) {
+        this.kategorija = voce;
+    }
     //Setters and Getters
 
     public int getId() {

@@ -5,6 +5,7 @@ import ba.unsa.etf.rpr.exceptions.ArtikliException;
 
 import java.sql.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Abstract class that implements DAO CRUD methods for every entity
@@ -42,6 +43,10 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
                 String url = p.getProperty("db.connection_string");
                 String username = p.getProperty("db.username");
                 String password = p.getProperty("db.password");
+                System.out.println("Create connection");
+                System.out.println(url);
+                System.out.println(username);
+                System.out.println(password);
                 AbstractDao.connection=DriverManager.getConnection(url,username,password);
             }catch (Exception e){
                 e.printStackTrace();
@@ -83,12 +88,14 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
         }catch (ArtikliException e){
             throw new ArtikliException("Problem sa getbyId u ArtikliDaoSQLImpl");
         }*/
-        return executeQueryUnique("SELECT * FROM " + this.tableName+"WHERE id = ?", new Object[]{id});
+        return executeQueryUnique("SELECT * FROM " + this.tableName + " WHERE id = ?", new Object[]{id});
 
     }
 
     public List<T> getAll() throws ArtikliException {
-        return executeQuery("SELECT * FROM "+ tableName, null);
+        String query = "SELECT * FROM " + tableName;
+        System.out.println(query);
+        return executeQuery(query, null);
     }
 
 
@@ -126,6 +133,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
             }
             return resultList;
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new ArtikliException("Problemi sa executequery metodom");
         }
     }
@@ -139,6 +147,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
      */
     public T executeQueryUnique(String query, Object[] params) throws ArtikliException{
         List<T> result = executeQuery(query, params);
+        System.out.println(result);
         if (result != null && result.size() == 1){
             return result.get(0);
         }else{
@@ -153,21 +162,13 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
      * Example: (id, name, date) ?,?,?
      */
     private Map.Entry<String, String> prepareInsertParts(Map<String, Object> row){
-        StringBuilder columns = new StringBuilder();
-        StringBuilder questions = new StringBuilder();
-
-        int counter = 0;
-        for (Map.Entry<String, Object> entry: row.entrySet()) {
-            counter++;
-            if (entry.getKey().equals("id")) continue; //skip insertion of id due autoincrement
-            columns.append(entry.getKey());
-            questions.append("?");
-            if (row.size() != counter) {
-                columns.append(",");
-                questions.append(",");
-            }
-        }
-        return new AbstractMap.SimpleEntry<>(columns.toString(), questions.toString());
+        List<String> columnNames = row.keySet()
+                .stream()
+                .filter(column -> !column.equals("id"))
+                .collect(Collectors.toList());
+        String columns = String.join(",", columnNames);
+        String questions = columnNames.stream().map(column -> "?").collect(Collectors.joining(","));
+        return new AbstractMap.SimpleEntry<>(columns, questions);
     }
     /**
      * Prepare columns for update statement id=?, name=?, ...
@@ -199,7 +200,9 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
         builder.append("VALUES (").append(columns.getValue()).append(")");
 
         try{
-            PreparedStatement stmt = getConnection().prepareStatement(builder.toString(), Statement.RETURN_GENERATED_KEYS);
+            String query = builder.toString();
+            System.out.println(query);
+            PreparedStatement stmt = getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             // bind params. IMPORTANT treeMap is used to keep columns sorted so params are bind correctly
             int counter = 1;
             for (Map.Entry<String, Object> entry: row.entrySet()) {
@@ -215,6 +218,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
 
             return item;
         }catch (SQLException e){
+            e.printStackTrace();
             throw new ArtikliException("Problem je add metoda");
         }
     }

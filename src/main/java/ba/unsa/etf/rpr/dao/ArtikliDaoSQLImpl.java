@@ -8,54 +8,68 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliDao {
+
+public class ArtikliDaoSQLImpl extends AbstractDao<Artikli> implements ArtikliDao {
+
     private static ArtikliDaoSQLImpl instance = null;
-    private ArtikliDaoSQLImpl() {super("Artikli");}
 
+    private ArtikliDaoSQLImpl() {
+        super("Artikli");
+    }
 
-    public static ArtikliDaoSQLImpl getInstance(){
-        if(instance == null)
+    public static ArtikliDaoSQLImpl getInstance() {
+        if (instance == null) {
             instance = new ArtikliDaoSQLImpl();
+        }
         return instance;
     }
 
-    public static void removeInstance(){
-        if(instance != null)
+    public static void removeInstance() {
+        if (instance != null) {
             instance = null;
+        }
     }
+
     @Override
     public Artikli row2object(ResultSet rs) throws ArtikliException {
-        try{
+        try {
             Artikli a = new Artikli();
             a.setId(rs.getInt("id"));
             a.setNaziv(rs.getString("naziv"));
             a.setCijena(rs.getInt("cijena"));
             a.setIstekRoka(rs.getDate("istekRoka"));
-//            int i = rs.getInt("idKategorije");
-//            Kategorije k = DaoFactory.kategorijeDao().getById(i);
-//            a.setKategorija(k);
-            a.setKategorija(DaoFactory.kategorijeDao().getById(rs.getInt("idKategorije")));
-            a.setProdaje(DaoFactory.prodajeDao().getById(rs.getInt("idProdaje")));
+
+            Integer idKategorije = (Integer) rs.getObject("idKategorije");
+            if (idKategorije != null) {
+                a.setKategorija(DaoFactory.kategorijeDao().getById(idKategorije));
+            }
+
+            Integer idProdaje = (Integer) rs.getObject("idProdaje");
+            if (idProdaje != null) {
+                a.setProdaje(DaoFactory.prodajeDao().getById(idProdaje));
+            }
             return a;
         } catch (Exception e) {
-            throw new ArtikliException("Problem sa row2object u ArtikliDaoSQLImpl");
+            throw new ArtikliException("Problem sa row2object u ArtikliDaoSQLImpl: " + e.getMessage(), e);
         }
     }
+
     /**
      * @param object - object to be mapped
      * @return map representation of object
      */
     @Override
     public Map<String, Object> object2row(Artikli object) {
-        Map<String,Object> artikal = new TreeMap<>();
+        Map<String, Object> artikal = new TreeMap<>();
         artikal.put("id", object.getId());
-        artikal.put("naziv",object.getNaziv());
-        artikal.put("cijena",object.getCijena());
-        artikal.put("istekRoka",object.getIstekRoka());
+        artikal.put("naziv", object.getNaziv());
+        artikal.put("cijena", object.getCijena());
+        artikal.put("istekRoka", object.getIstekRoka());
         artikal.put("idKategorije", object.getKategorija().getId());
-        artikal.put("idProdaje",object.getProdaje().getId());
+        artikal.put("idProdaje", object.getProdaje().getId());
         return artikal;
     }
+
     @Override
     public List<Artikli> traziPoIstekuRoka(Date rok) throws ArtikliException {
         return executeQuery("SELECT * FROM Artikli WHERE istekRoka = ?", new Object[]{rok});
@@ -63,9 +77,7 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli>  implements ArtikliD
 
     @Override
     public List<Artikli> traziPoCijeni(int cijena) throws ArtikliException {
-
         return executeQuery("SELECT * FROM Artikli WHERE cijena = ?", new Object[]{cijena});
-
     }
 
 }
