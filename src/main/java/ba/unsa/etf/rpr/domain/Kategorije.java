@@ -40,6 +40,8 @@ public class Kategorije implements Idable {
         return kategorija;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
