@@ -50,6 +50,8 @@ public class Kategorije implements Idable {
         return id == that.id;
     }
 
+
+
     @Override
     public int hashCode() {
         return Objects.hash(id, kategorija);
