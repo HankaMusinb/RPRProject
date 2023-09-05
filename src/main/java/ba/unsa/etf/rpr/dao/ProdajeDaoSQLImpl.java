@@ -8,6 +8,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * SQL Implementation of the DAO layer
+ * @author Hanka Musinbegovic
+ */
+
 public class ProdajeDaoSQLImpl extends AbstractDao<Prodaje> implements ProdajeDao {
 
     private static ProdajeDaoSQLImpl instance = null;
