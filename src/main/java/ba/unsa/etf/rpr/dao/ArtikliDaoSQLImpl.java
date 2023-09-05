@@ -8,6 +8,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * SQL Implementation of the DAO layer
+ * @author Hanka Musinbegovic
+ */
+
 public class ArtikliDaoSQLImpl extends AbstractDao<Artikli> implements ArtikliDao {
 
     private static ArtikliDaoSQLImpl instance = null;
