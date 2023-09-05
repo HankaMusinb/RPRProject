@@ -131,7 +131,7 @@ public class App {
 //            //                break;
 //        }
 //        }
-      //    List<Kategorije> listaKategorija = new ArrayList<>(DaoFactory.kategorijeDao().getAll());
+         //    List<Kategorije> listaKategorija = new ArrayList<>(DaoFactory.kategorijeDao().getAll());
         // DaoFactory.kategorijeDao().delete(listaKategorija.stream().filter(k -> k.getKategorija().equals("povrce")).findAny().get().getId());
         //      DaoFactory.kategorijeDao().delete(listaKategorija.stream().filter(k -> k.getKategorija().equals("sirevi")).findAny().get().getId());
 
