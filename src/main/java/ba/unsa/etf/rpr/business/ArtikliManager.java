@@ -64,6 +64,11 @@ public class ArtikliManager {
         return DaoFactory.artikliDao().add(a);
     }
 
+    /**
+     * 
+     * @param artikli
+     * @throws ArtikliException
+     */
 
     public void update(Artikli artikli) throws ArtikliException{
         DaoFactory.artikliDao().update(artikli);
