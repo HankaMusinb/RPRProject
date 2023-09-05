@@ -54,6 +54,12 @@ public class ArtikliManager {
     }
 
 
+    /**
+     *
+     * @param a
+     * @return item that is just now added
+     * @throws ArtikliException
+     */
     public Artikli add(Artikli a) throws ArtikliException{
         return DaoFactory.artikliDao().add(a);
     }
