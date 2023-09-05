@@ -138,6 +138,7 @@ public class App {
        // System.out.println(listaKategorija);
        // List<Artikli> listaArtikala = new ArrayList<>(DaoFactory.artikliDao().getAll());
         //System.out.println(listaArtikala);
+
     }
 
     static void testKategorije() throws ArtikliException {
