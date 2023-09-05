@@ -11,10 +11,8 @@ import java.util.List;
  *
  * @author Hanka Musinbegovic
  */
+
 public class ArtikliManager {
-
-
-
 
     public List<Artikli> searchArticlePrice(Integer text) throws ArtikliException{
         return DaoFactory.artikliDao().traziPoCijeni(text);
