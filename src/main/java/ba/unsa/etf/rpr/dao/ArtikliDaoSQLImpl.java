@@ -71,6 +71,7 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli> implements ArtikliDa
         return artikal;
     }
 
+
     @Override
     public List<Artikli> traziPoIstekuRoka(Date rok) throws ArtikliException {
         return executeQuery("SELECT * FROM Artikli WHERE istekRoka = ?", new Object[]{rok});
