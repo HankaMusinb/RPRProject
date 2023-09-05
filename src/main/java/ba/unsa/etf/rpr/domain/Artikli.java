@@ -94,4 +94,6 @@ public class Artikli implements Idable {
     public int hashCode() {
         return Objects.hash(id, naziv, cijena, kategorija, istekRoka, prodaje);
     }
+
+
 }
