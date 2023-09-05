@@ -65,7 +65,7 @@ public class ArtikliManager {
     }
 
     /**
-     * 
+     *
      * @param artikli
      * @throws ArtikliException
      */

@@ -12,12 +12,25 @@ import java.util.List;
  * @author Hanka Musinbegovic
  */
 public class KategorijeManager {
+
+    /**
+     *
+     * @param name
+     * @throws ArtikliException
+     */
     public void validateCategoryName(String name) throws ArtikliException{
         if (name == null || name.length()>25 || name.length() < 3){
             throw new ArtikliException("Ime kategorije neodgovarajuce.");
         }
 
     }
+
+    /**
+     *
+     * @param kategorije
+     * @return just now added category
+     * @throws ArtikliException
+     */
     public Kategorije add(Kategorije kategorije) throws ArtikliException{
         if (kategorije.getId() != 0){
             throw new ArtikliException("Nemoguce dodati kategoriju s ovim ID (ID postoji).");
@@ -33,6 +46,11 @@ public class KategorijeManager {
         }
     }
 
+    /**
+     * deletes category by given id
+     * @param kategorijeId
+     * @throws ArtikliException
+     */
     public void delete(int kategorijeId) throws ArtikliException{
         try {
             DaoFactory.kategorijeDao().delete(kategorijeId);
@@ -44,6 +62,11 @@ public class KategorijeManager {
         }
     }
 
+    /**
+     *
+     * @return list of all existing categories
+     * @throws ArtikliException
+     */
 
     public List<Kategorije> getAll() throws ArtikliException{
         return DaoFactory.kategorijeDao().getAll();
