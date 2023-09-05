@@ -20,6 +20,7 @@ public class KategorijeDaoSQLImpl extends AbstractDao<Kategorije> implements Kat
 
     private KategorijeDaoSQLImpl() { super ("Kategorije"); }
 
+
    public static KategorijeDaoSQLImpl getInstance(){
         if(instance == null) instance = new KategorijeDaoSQLImpl();
         return instance;
@@ -29,6 +30,7 @@ public class KategorijeDaoSQLImpl extends AbstractDao<Kategorije> implements Kat
         if (instance != null)
             instance = null;
    }
+
 
     @Override
     public Kategorije row2object(ResultSet rs) throws ArtikliException {
