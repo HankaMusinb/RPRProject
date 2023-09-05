@@ -9,7 +9,6 @@ import java.util.List;
 /**
  * Business Logic Layer for managment of Categories
  *
- *
  * @author Hanka Musinbegovic
  */
 public class KategorijeManager {
