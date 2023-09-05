@@ -4,6 +4,10 @@ import java.util.Date;
 import java.util.Objects;
 
 
+/**
+ * All possible items in the store
+ * @author Hanka Musinbegovic
+ */
 public class Artikli implements Idable {
 
     // Atributes
