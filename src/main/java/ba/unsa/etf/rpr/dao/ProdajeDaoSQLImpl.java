@@ -39,8 +39,6 @@ public class ProdajeDaoSQLImpl extends AbstractDao<Prodaje> implements ProdajeDa
             Prodaje prodaje = new Prodaje();
             prodaje.setId(rs.getInt("id"));
             prodaje.setZarada(rs.getInt("zarada"));
-
-
             return prodaje;
         }catch (SQLException e){
             throw new ArtikliException("Problem sa row2object u ProdajeDaoSQLImpl");
