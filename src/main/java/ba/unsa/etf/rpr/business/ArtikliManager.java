@@ -14,15 +14,30 @@ import java.util.List;
 
 public class ArtikliManager {
 
+    /**
+    Finds all the items in the store by given price
+     */
     public List<Artikli> searchArticlePrice(Integer text) throws ArtikliException{
         return DaoFactory.artikliDao().traziPoCijeni(text);
 
     }
 
+    /**
+     *
+     * @param artikliId
+     * @return item in the store with given id
+     * @throws ArtikliException
+     */
+
     public Artikli getById(int artikliId) throws ArtikliException{
         return DaoFactory.artikliDao().getById(artikliId);
     }
 
+    /**
+     *
+     * @return all items in the store currently
+     * @throws ArtikliException
+     */
 
     public List<Artikli> getAll() throws ArtikliException{
         return DaoFactory.artikliDao().getAll();
