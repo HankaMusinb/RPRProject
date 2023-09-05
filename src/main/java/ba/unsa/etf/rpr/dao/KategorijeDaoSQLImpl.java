@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * //MySQL implementation of the DAO
+ * SQL implementation of the DAO
  * @author Hanka Musinbegovic
  *
  */
