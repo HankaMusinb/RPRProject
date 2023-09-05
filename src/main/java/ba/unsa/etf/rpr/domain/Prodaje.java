@@ -12,6 +12,7 @@ public class Prodaje implements Idable {
     private int id;
     private int zarada;
 
+
     //Setters and getters
 
     public int getId() {
