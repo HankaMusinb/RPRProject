@@ -192,10 +192,10 @@ public class App {
             DaoFactory.artikliDao().add(jabuka);
             listaArtikala = new ArrayList<>(DaoFactory.artikliDao().getAll());
             System.out.println(listaArtikala);
-            if (listaArtikala.stream().noneMatch(a -> a.getNaziv().equals("Milka"))) {
-                System.out.println("Nije dodata jabuka");
+            if (listaArtikala.stream().noneMatch(a -> a.getNaziv().equals("Lubenica"))) {
+                System.out.println("Nije dodata lubenica");
             } else {
-                System.out.println("Uspjesno dodata jabuka, brisemo je");
+                System.out.println("Uspjesno dodata lubenica, brisemo je");
                 //  DaoFactory.artikliDao().delete(listaArtikala.stream().filter(a -> a.getNaziv().equals("Jabuka")).findAny().get().getId());
             }
         } else {
