@@ -145,14 +145,14 @@ public class App {
         List<Kategorije> listaKategorija = new ArrayList<>(DaoFactory.kategorijeDao().getAll());
         System.out.println(listaKategorija);
         if (listaKategorija.stream().noneMatch(k -> k.getKategorija().equals("Kozmetika"))) {
-            System.out.println("Nema Slatki program u bazi");
+            System.out.println("Nema Kozmetike u bazi");
             Kategorije voce = new Kategorije();
-            voce.setKategorija("Slatki program");
+            voce.setKategorija("Kozmetika");
             DaoFactory.kategorijeDao().add(voce);
             listaKategorija = new ArrayList<>(DaoFactory.kategorijeDao().getAll());
             System.out.println(listaKategorija);
-            if (listaKategorija.stream().noneMatch(k -> k.getKategorija().equals("Slatki program"))) {
-                System.out.println("Nije dodato Slatki program");
+            if (listaKategorija.stream().noneMatch(k -> k.getKategorija().equals("Kozmetika"))) {
+                System.out.println("Nije dodato Kozmetika");
             } else {
                 System.out.println("Uspjesno dodato Slatki program");
                 // DaoFactory.kategorijeDao().delete(listaKategorija.stream().filter(k -> k.getKategorija().equals("Voce")).findAny().get().getId());
