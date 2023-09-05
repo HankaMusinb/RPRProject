@@ -2,7 +2,6 @@ package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Kategorije;
 import ba.unsa.etf.rpr.exceptions.ArtikliException;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
@@ -10,7 +9,11 @@ import java.util.TreeMap;
 
 /**
  * //MySQL implementation of the DAO
+ * @author Hanka Musinbegovic
+ *
  */
+
+
 public class KategorijeDaoSQLImpl extends AbstractDao<Kategorije> implements KategorijeDao {
 
     private static KategorijeDaoSQLImpl instance = null;
