@@ -167,7 +167,7 @@ public class App {
     static void testArtikli() throws ArtikliException {
         List<Artikli> listaArtikala = new ArrayList<>(DaoFactory.artikliDao().getAll());
         System.out.println(listaArtikala);
-        if (listaArtikala.stream().noneMatch(a -> a.getNaziv().equals("Milka"))) {
+        if (listaArtikala.stream().noneMatch(a -> a.getNaziv().equals("Lubenica"))) {
             ArrayList<Kategorije> listaKategorija = new ArrayList<>(DaoFactory.kategorijeDao().getAll());
             Kategorije voce;
             if (listaKategorija.stream().noneMatch(k -> k.getKategorija().equals("Slatki program"))) {
