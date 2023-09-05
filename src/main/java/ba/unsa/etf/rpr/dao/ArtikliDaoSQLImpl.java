@@ -54,6 +54,7 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli> implements ArtikliDa
         }
     }
 
+
     /**
      * @param object - object to be mapped
      * @return map representation of object
