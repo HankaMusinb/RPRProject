@@ -247,6 +247,16 @@
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
         </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version> <!-- Use the appropriate version -->
+          <configuration>
+            <source>8</source> <!-- e.g., 1.8, 11, etc. -->
+            <target>8</target>
+            <compilerArgument>-proc:none</compilerArgument>
+          </configuration>
+        </plugin>
         <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
         <plugin>
           <artifactId>maven-site-plugin</artifactId>
