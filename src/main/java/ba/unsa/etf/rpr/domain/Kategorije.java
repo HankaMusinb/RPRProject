@@ -2,6 +2,11 @@ package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
+/**
+ * List of all possible categories of items in the store
+ * @author Hanka Musinbegovic
+ */
+
 public class Kategorije implements Idable {
     //Atributes
     private int id;
