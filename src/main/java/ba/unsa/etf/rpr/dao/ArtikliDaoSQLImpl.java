@@ -2,7 +2,6 @@ package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Artikli;
 import ba.unsa.etf.rpr.exceptions.ArtikliException;
-
 import java.sql.ResultSet;
 import java.util.Date;
 import java.util.List;
