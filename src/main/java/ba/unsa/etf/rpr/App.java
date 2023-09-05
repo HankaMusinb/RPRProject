@@ -170,20 +170,20 @@ public class App {
         if (listaArtikala.stream().noneMatch(a -> a.getNaziv().equals("Lubenica"))) {
             ArrayList<Kategorije> listaKategorija = new ArrayList<>(DaoFactory.kategorijeDao().getAll());
             Kategorije voce;
-            if (listaKategorija.stream().noneMatch(k -> k.getKategorija().equals("Slatki program"))) {
-                voce = new Kategorije("Slatki program");
+            if (listaKategorija.stream().noneMatch(k -> k.getKategorija().equals("Voce"))) {
+                voce = new Kategorije("Voce");
                 DaoFactory.kategorijeDao().add(voce);
             } else {
-                voce = listaKategorija.stream().filter(k -> k.getKategorija().equals("Slatki program")).findAny().get();
+                voce = listaKategorija.stream().filter(k -> k.getKategorija().equals("Voce")).findAny().get();
             }
 
             Prodaje prodaja_kurkume = new Prodaje();
-            prodaja_kurkume.setZarada(2);
+            prodaja_kurkume.setZarada(6);
             DaoFactory.prodajeDao().add(prodaja_kurkume);
 
-            System.out.println("Nema paradajza u bazi");
+            System.out.println("Nema lubenice u bazi");
             Artikli jabuka = new Artikli();
-            jabuka.setNaziv("Milka");
+            jabuka.setNaziv("Lubenica");
             jabuka.setCijena(2);
             jabuka.setKategorija(voce);
             jabuka.setProdaje(prodaja_kurkume);
