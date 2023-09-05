@@ -14,8 +14,10 @@ import javafx.scene.layout.HBox;
  */
 public class DoubleButtonTableCell<T> extends TableCell<T, T> {
 
+
     private Button edit;
     private Button delete;
+
 
     /**
      * Default constructor
