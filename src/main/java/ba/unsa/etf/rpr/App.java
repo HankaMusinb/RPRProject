@@ -202,41 +202,7 @@ public class App {
             System.out.println("Ima jabuka u bazi, brisemo je");
             //    DaoFactory.artikliDao().delete(listaArtikala.stream().filter(a -> a.getNaziv().equals("Jabuka")).findAny().get().getId());
         }
-        if (listaArtikala.stream().noneMatch(a -> a.getNaziv().equals("Med"))) {
-            ArrayList<Kategorije> listaKategorija = new ArrayList<>(DaoFactory.kategorijeDao().getAll());
-            Kategorije voce;
-            if (listaKategorija.stream().noneMatch(k -> k.getKategorija().equals("Domaci proizvodi"))) {
-                voce = new Kategorije("Domaci proizvodi");
-                DaoFactory.kategorijeDao().add(voce);
-            } else {
-                voce = listaKategorija.stream().filter(k -> k.getKategorija().equals("Domaci proizvodi")).findAny().get();
-            }
 
-            Prodaje prodaja_kurkume = new Prodaje();
-            prodaja_kurkume.setZarada(3);
-            DaoFactory.prodajeDao().add(prodaja_kurkume);
-
-            System.out.println("Nema paradajza u bazi");
-            Artikli jabuka = new Artikli();
-            jabuka.setNaziv("Med");
-            jabuka.setCijena(25);
-            jabuka.setKategorija(voce);
-            jabuka.setProdaje(prodaja_kurkume);
-            jabuka.setIstekRoka(Date.valueOf(LocalDate.now()));
-
-            DaoFactory.artikliDao().add(jabuka);
-            listaArtikala = new ArrayList<>(DaoFactory.artikliDao().getAll());
-            System.out.println(listaArtikala);
-            if (listaArtikala.stream().noneMatch(a -> a.getNaziv().equals("Med"))) {
-                System.out.println("Nije dodata jabuka");
-            } else {
-                System.out.println("Uspjesno dodata jabuka, brisemo je");
-                //  DaoFactory.artikliDao().delete(listaArtikala.stream().filter(a -> a.getNaziv().equals("Jabuka")).findAny().get().getId());
-            }
-        } else {
-            System.out.println("Ima jabuka u bazi, brisemo je");
-            //    DaoFactory.artikliDao().delete(listaArtikala.stream().filter(a -> a.getNaziv().equals("Jabuka")).findAny().get().getId());
-        }
     }
 
 }
