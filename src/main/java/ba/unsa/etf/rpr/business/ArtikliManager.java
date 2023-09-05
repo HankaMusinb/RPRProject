@@ -43,6 +43,11 @@ public class ArtikliManager {
         return DaoFactory.artikliDao().getAll();
     }
 
+    /**
+     *
+     * @param id
+     * @throws ArtikliException
+     */
 
     public void delete(int id) throws ArtikliException{
         DaoFactory.artikliDao().delete(id);
