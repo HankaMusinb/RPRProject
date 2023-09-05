@@ -144,7 +144,7 @@ public class App {
     static void testKategorije() throws ArtikliException {
         List<Kategorije> listaKategorija = new ArrayList<>(DaoFactory.kategorijeDao().getAll());
         System.out.println(listaKategorija);
-        if (listaKategorija.stream().noneMatch(k -> k.getKategorija().equals("Slatki program"))) {
+        if (listaKategorija.stream().noneMatch(k -> k.getKategorija().equals("Voce"))) {
             System.out.println("Nema Slatki program u bazi");
             Kategorije voce = new Kategorije();
             voce.setKategorija("Slatki program");
