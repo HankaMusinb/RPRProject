@@ -24,7 +24,6 @@ public class Prodaje implements Idable {
     }
 
 
-
     public int getZarada() {
         return zarada;
     }
@@ -32,6 +31,7 @@ public class Prodaje implements Idable {
     public void setZarada(int zarada) {
         this.zarada = zarada;
     }
+
 
 
     //Hash, toString, equals methods
