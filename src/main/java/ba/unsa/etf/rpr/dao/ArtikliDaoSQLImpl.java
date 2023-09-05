@@ -44,6 +44,7 @@ public class ArtikliDaoSQLImpl extends AbstractDao<Artikli> implements ArtikliDa
                 a.setKategorija(DaoFactory.kategorijeDao().getById(idKategorije));
             }
 
+
             Integer idProdaje = (Integer) rs.getObject("idProdaje");
             if (idProdaje != null) {
                 a.setProdaje(DaoFactory.prodajeDao().getById(idProdaje));
