@@ -131,13 +131,13 @@ public class App {
 //            //                break;
 //        }
 //        }
+
          //    List<Kategorije> listaKategorija = new ArrayList<>(DaoFactory.kategorijeDao().getAll());
          // DaoFactory.kategorijeDao().delete(listaKategorija.stream().filter(k -> k.getKategorija().equals("povrce")).findAny().get().getId());
-        //      DaoFactory.kategorijeDao().delete(listaKategorija.stream().filter(k -> k.getKategorija().equals("sirevi")).findAny().get().getId());
-
-       // System.out.println(listaKategorija);
-        // List<Artikli> listaArtikala = new ArrayList<>(DaoFactory.artikliDao().getAll());
-        //System.out.println(listaArtikala);
+         //      DaoFactory.kategorijeDao().delete(listaKategorija.stream().filter(k -> k.getKategorija().equals("sirevi")).findAny().get().getId());
+         // System.out.println(listaKategorija);
+         // List<Artikli> listaArtikala = new ArrayList<>(DaoFactory.artikliDao().getAll());
+         //System.out.println(listaArtikala);
 
     }
 
