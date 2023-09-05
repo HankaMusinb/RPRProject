@@ -72,6 +72,12 @@ public class KategorijeManager {
         return DaoFactory.kategorijeDao().getAll();
     }
 
+    /**
+     *
+     * @param kategorija
+     * @return updated version of the changed category
+     * @throws ArtikliException
+     */
 
     public Kategorije update(Kategorije kategorija) throws ArtikliException{
         validateCategoryName(kategorija.getKategorija());
