@@ -154,11 +154,11 @@ public class App {
             if (listaKategorija.stream().noneMatch(k -> k.getKategorija().equals("Kozmetika"))) {
                 System.out.println("Nije dodato Kozmetika");
             } else {
-                System.out.println("Uspjesno dodato Slatki program");
+                System.out.println("Uspjesno dodato Kozmetika");
                 // DaoFactory.kategorijeDao().delete(listaKategorija.stream().filter(k -> k.getKategorija().equals("Voce")).findAny().get().getId());
             }
         } else {
-            System.out.println("Ima Slatki program u bazi, brisemo ga");
+            System.out.println("Ima Kozmetika u bazi, brisemo ga");
             DaoFactory.kategorijeDao().delete(listaKategorija.stream().filter(k -> k.getKategorija().equals("MSlatki program")).findAny().get().getId());
         }
 
