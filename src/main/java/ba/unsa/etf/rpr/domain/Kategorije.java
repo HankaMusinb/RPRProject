@@ -56,4 +56,6 @@ public class Kategorije implements Idable {
     public int hashCode() {
         return Objects.hash(id, kategorija);
     }
+
+
 }
