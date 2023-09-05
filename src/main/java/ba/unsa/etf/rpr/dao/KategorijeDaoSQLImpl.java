@@ -46,11 +46,12 @@ public class KategorijeDaoSQLImpl extends AbstractDao<Kategorije> implements Kat
 
     }
 
+
     @Override
     public Map<String, Object> object2row(Kategorije object) {
         Map<String, Object> row = new TreeMap<>();
         row.put("id", object.getId());
-        row.put("Kategorija", object.getKategorija());
+        row.put("Kategorija", object.getKategorija()); //Kategorija = naziv
         return row;
     }
 
