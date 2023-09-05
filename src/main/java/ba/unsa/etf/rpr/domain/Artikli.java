@@ -89,6 +89,7 @@ public class Artikli implements Idable {
         return id == artikli.id && cijena == artikli.cijena && Objects.equals(naziv, artikli.naziv) && Objects.equals(kategorija, artikli.kategorija) && Objects.equals(istekRoka, artikli.istekRoka) && Objects.equals(prodaje, artikli.prodaje);
     }
 
+
     @Override
     public int hashCode() {
         return Objects.hash(id, naziv, cijena, kategorija, istekRoka, prodaje);
