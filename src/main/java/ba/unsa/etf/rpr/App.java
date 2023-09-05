@@ -141,6 +141,7 @@ public class App {
 
     }
 
+
     static void testKategorije() throws ArtikliException {
         List<Kategorije> listaKategorija = new ArrayList<>(DaoFactory.kategorijeDao().getAll());
         System.out.println(listaKategorija);
